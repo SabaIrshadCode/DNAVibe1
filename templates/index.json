@@ -149,6 +149,22 @@
         "award_cRCAaj": {
           "type": "award",
           "settings": {
+            "image": "shopify://shop_images/img2.jpg",
+            "title": "WebMD Best Product",
+            "tag": "Award Winner"
+          }
+        },
+        "award_tR7yyx": {
+          "type": "award",
+          "settings": {
+            "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b.jpg",
+            "title": "USA Today Best Gift",
+            "tag": "Award Winner"
+          }
+        },
+        "award_taiNip": {
+          "type": "award",
+          "settings": {
             "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b.jpg",
             "title": "USA Today Best Gift",
             "tag": "Award Winner"
@@ -157,7 +173,9 @@
       },
       "block_order": [
         "award_icrp9z",
-        "award_cRCAaj"
+        "award_cRCAaj",
+        "award_tR7yyx",
+        "award_taiNip"
       ],
       "name": "Awards Section",
       "settings": {
