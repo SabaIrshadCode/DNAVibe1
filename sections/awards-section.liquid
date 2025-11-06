@@ -1,0 +1,228 @@
+<section class="awards-section">
+  <div class="container-wrapper">
+    <div class="content-container">
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+      <p class="section-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="awards-grid">
+      {% for block in section.blocks %}
+        <div class="award-card">
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+          {% endif %}
+          <div class="award-info">
+            <h3>{{ block.settings.title }}</h3>
+            <p class="tag">{{ block.settings.tag }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    /* Your same CSS copied here (optional: move to theme.css if preferred) */
+    .awards-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 0px;
+      background: radial-gradient(
+        ellipse at center 65%,
+        #db2777 -80%,
+        #fff3f8 55%,
+        #ffffff 70%
+      );
+    }
+    .container-wrapper {
+      width: 1280px;
+      display: flex;
+      gap: 50px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .section-title {
+      font-size: 48px;
+      line-height: 48px;
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      color: #0e0f11;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .section-subtitle {
+      font-family: Geist, sans-serif;
+      color: #0a0a0a;
+      font-size: 20px;
+      line-height: 28px;
+      text-align: center;
+      font-weight: 400;
+    }
+    .awards-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      justify-items: center;
+    }
+    .award-card {
+      position: relative;
+      width: 100%;
+      max-width: 302px;
+      height: 400px;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 0.8px;
+      box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.3);
+    }
+    .award-card img {
+      width: 100%;
+      display: block;
+      height: 100%;
+      object-fit: cover;
+    }
+    .award-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 50%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+    }
+    .award-info {
+      position: absolute;
+      bottom: 8%;
+      left: 10%;
+      color: #fff;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 13.6px;
+      z-index: 2;
+    }
+    .award-info h3 {
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+    }
+    .award-info .tag {
+      color: #e31c79;
+      font-size: 12px;
+      line-height: 16px;
+      font-family: Inter, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    @media (max-width: 1024px) {
+      .awards-section {
+        padding: 50px 15px;
+      }
+      .container-wrapper {
+        gap: 40px;
+      }
+      .awards-grid {
+        grid-template-columns: repeat(2, 49%);
+        gap: 20px;
+      }
+      .award-card {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .awards-section {
+        padding: 40px 10px;
+      }
+      .section-title {
+        font-size: 32px;
+        line-height: 36px;
+        margin-bottom: 10px;
+      }
+      .container-wrapper {
+        gap: 30px;
+      }
+      .awards-grid {
+        grid-template-columns: repeat(2, 49%);
+        gap: 10px;
+      }
+      .award-card {
+        height: 250px;
+      }
+      .award-info {
+        bottom: 15px;
+        left: 15px;
+        gap: 10px;
+        padding-right: 5px;
+      }
+      .award-info h3 {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+  </style>
+
+  {% schema %}
+  {
+    "name": "Awards Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Section Heading",
+        "default": "Awards Speak About Us More Than Us"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Section Subheading",
+        "default": "Recognized by the leaders, for the leaders."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "award",
+        "name": "Award Card",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Award Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Award Title",
+            "default": "Award Title Here"
+          },
+          {
+            "type": "text",
+            "id": "tag",
+            "label": "Award Tag",
+            "default": "Award Winner"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Awards Section",
+        "category": "Custom Sections"
+      }
+    ]
+  }
+  {% endschema %}
+</section>
