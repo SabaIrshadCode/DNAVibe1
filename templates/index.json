@@ -48,50 +48,6 @@
         "show_text_below": false
       }
     },
-    "awards_section_wAUNpr": {
-      "type": "awards-section",
-      "blocks": {
-        "award_4krf6e": {
-          "type": "award",
-          "settings": {
-            "title": "Top Excellence Award",
-            "tag": "2023 Winner"
-          }
-        },
-        "award_iYLLMP": {
-          "type": "award",
-          "settings": {
-            "title": "Innovation Leader",
-            "tag": "2022 Winner"
-          }
-        },
-        "award_UBntKf": {
-          "type": "award",
-          "settings": {
-            "title": "Best Design Studio",
-            "tag": "2021 Winner"
-          }
-        },
-        "award_CTQFgr": {
-          "type": "award",
-          "settings": {
-            "title": "Creative Excellence",
-            "tag": "2020 Winner"
-          }
-        }
-      },
-      "block_order": [
-        "award_4krf6e",
-        "award_iYLLMP",
-        "award_UBntKf",
-        "award_CTQFgr"
-      ],
-      "name": "Awards Section",
-      "settings": {
-        "heading": "Awards Speak About Us More Than Us",
-        "subheading": "Recognized by the leaders, for the leaders."
-      }
-    },
     "awards_section_JPTWLg": {
       "type": "awards-section",
       "blocks": {
@@ -274,7 +230,6 @@
   },
   "order": [
     "image_banner",
-    "awards_section_wAUNpr",
     "awards_section_JPTWLg",
     "featured_collection",
     "image_banner_w9p3WU",
