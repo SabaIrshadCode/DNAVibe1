@@ -181,53 +181,88 @@
   </style>
 
   {% schema %}
-  {
-    "name": "Awards Section",
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Section Heading",
-        "default": "Awards Speak About Us More Than Us"
-      },
-      {
-        "type": "text",
-        "id": "subheading",
-        "label": "Section Subheading",
-        "default": "Recognized by the leaders, for the leaders."
-      }
-    ],
-    "blocks": [
-      {
-        "type": "award",
-        "name": "Award Card",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Award Image"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Award Title",
-            "default": "Award Title Here"
-          },
-          {
-            "type": "text",
-            "id": "tag",
-            "label": "Award Tag",
-            "default": "Award Winner"
+{
+  "name": "Awards Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Awards Speak About Us More Than Us"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section Subheading",
+      "default": "Recognized by the leaders, for the leaders."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "award",
+      "name": "Award Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Award Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Award Title",
+          "default": "Award Title Here"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Award Tag",
+          "default": "Award Winner"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Awards Section",
+      "category": "Custom Sections",
+      "blocks": [
+        {
+          "type": "award",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/award1.jpg",
+            "title": "Top Excellence Award",
+            "tag": "2023 Winner"
           }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Awards Section",
-        "category": "Custom Sections"
-      }
-    ]
-  }
-  {% endschema %}
+        },
+        {
+          "type": "award",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/award2.jpg",
+            "title": "Innovation Leader",
+            "tag": "2022 Winner"
+          }
+        },
+        {
+          "type": "award",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/award3.jpg",
+            "title": "Best Design Studio",
+            "tag": "2021 Winner"
+          }
+        },
+        {
+          "type": "award",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/award4.jpg",
+            "title": "Creative Excellence",
+            "tag": "2020 Winner"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
 </section>
