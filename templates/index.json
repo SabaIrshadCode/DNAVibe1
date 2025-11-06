@@ -56,7 +56,9 @@
           "settings": {
             "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b_9b8b2377-6282-4457-807d-1628f3a6a8ba.jpg",
             "title": "USA Today Best Gift",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_i9NHty": {
@@ -64,7 +66,9 @@
           "settings": {
             "image": "shopify://shop_images/img2.jpg",
             "title": "WebMD Best Product",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_tJ3qTN": {
@@ -72,7 +76,9 @@
           "settings": {
             "image": "shopify://shop_images/img3.jpg",
             "title": "Coolest Thing Made in Colorado",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_dJNYFb": {
@@ -80,7 +86,9 @@
           "settings": {
             "image": "shopify://shop_images/img4.jpg",
             "title": "Health 2.0 Outstanding Leadership",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         }
       },
@@ -214,7 +222,9 @@
           "settings": {
             "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b_9b8b2377-6282-4457-807d-1628f3a6a8ba.jpg",
             "title": "USA Today Best Gift",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_wAtRzm": {
@@ -222,7 +232,9 @@
           "settings": {
             "image": "shopify://shop_images/img2.jpg",
             "title": "WebMD Best Product",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_itgweU": {
@@ -230,7 +242,9 @@
           "settings": {
             "image": "shopify://shop_images/img3.jpg",
             "title": "Coolest Thing Made in Colorado",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         }
       },
@@ -253,7 +267,9 @@
           "settings": {
             "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b_9b8b2377-6282-4457-807d-1628f3a6a8ba.jpg",
             "title": "USA Today Best Gift",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_3Yi47n": {
@@ -261,7 +277,9 @@
           "settings": {
             "image": "shopify://shop_images/img2.jpg",
             "title": "WebMD Best Product",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_NnjGrF": {
@@ -269,7 +287,9 @@
           "settings": {
             "image": "shopify://shop_images/img3.jpg",
             "title": "Coolest Thing Made in Colorado",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_6zzANf": {
@@ -277,7 +297,9 @@
           "settings": {
             "image": "shopify://shop_images/img4.jpg",
             "title": "Health 2.0 Outstanding Leadership",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         }
       },
@@ -360,7 +382,9 @@
           "settings": {
             "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b.jpg",
             "title": "USA Today Best Gift",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "uppercase"
           }
         },
         "award_cRCAaj": {
@@ -368,7 +392,9 @@
           "settings": {
             "image": "shopify://shop_images/img2.jpg",
             "title": "WebMD Best Product",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_tR7yyx": {
@@ -376,7 +402,9 @@
           "settings": {
             "image": "shopify://shop_images/img3.jpg",
             "title": "Coolest Thing Made in Colorado",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         },
         "award_taiNip": {
@@ -384,7 +412,9 @@
           "settings": {
             "image": "shopify://shop_images/img4.jpg",
             "title": "Health 2.0 Outstanding Leadership",
-            "tag": "Award Winner"
+            "tag": "Award Winner",
+            "tag_color": "#e31c79",
+            "tag_transform": "none"
           }
         }
       },
