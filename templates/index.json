@@ -137,6 +137,19 @@
     },
     "awards_section_xXLPCj": {
       "type": "awards-section",
+      "blocks": {
+        "award_icrp9z": {
+          "type": "award",
+          "settings": {
+            "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b.jpg",
+            "title": "Award Title Here",
+            "tag": "Award Winner"
+          }
+        }
+      },
+      "block_order": [
+        "award_icrp9z"
+      ],
       "name": "Awards Section",
       "settings": {
         "heading": "Awards Speak About Us More Than Us",
