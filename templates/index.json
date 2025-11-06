@@ -206,6 +206,42 @@
         "padding_bottom": 36
       }
     },
+    "awards_section_f4ewCN": {
+      "type": "awards-section",
+      "blocks": {
+        "award_F8QBBL": {
+          "type": "award",
+          "settings": {
+            "title": "USA Today Best Gift",
+            "tag": "Award Winner"
+          }
+        },
+        "award_wAtRzm": {
+          "type": "award",
+          "settings": {
+            "title": "WebMD Best Product",
+            "tag": "Award Winner"
+          }
+        },
+        "award_itgweU": {
+          "type": "award",
+          "settings": {
+            "title": "Coolest Thing Made in Colorado",
+            "tag": "Award Winner"
+          }
+        }
+      },
+      "block_order": [
+        "award_F8QBBL",
+        "award_wAtRzm",
+        "award_itgweU"
+      ],
+      "name": "Awards Section",
+      "settings": {
+        "heading": "Awards Speak About Us More Than Us",
+        "subheading": "Recognized by the leaders, for the leaders."
+      }
+    },
     "image_banner_w9p3WU": {
       "type": "image-banner",
       "blocks": {
@@ -320,6 +356,7 @@
     "features_section_C98rfG",
     "features_section_QGD8kP",
     "featured_collection",
+    "awards_section_f4ewCN",
     "image_banner_w9p3WU",
     "contact_form_UkixKM",
     "awards_section_xXLPCj"
