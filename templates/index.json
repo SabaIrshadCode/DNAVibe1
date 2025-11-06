@@ -110,6 +110,7 @@
         "feature_egWtPT": {
           "type": "feature",
           "settings": {
+            "image": "shopify://shop_images/img2.jpg",
             "title": "Precision Diffusion Technology",
             "description": "Incorporates frequency stabilization and micro-diffusion for targeted light delivery."
           }
@@ -117,6 +118,7 @@
         "feature_wWRnwt": {
           "type": "feature",
           "settings": {
+            "image": "shopify://shop_images/img3.jpg",
             "title": "Flexible, Wearable Design",
             "description": "Features a flush-fit silicone construction that conforms to various body parts."
           }
@@ -124,6 +126,7 @@
         "feature_jb9kpY": {
           "type": "feature",
           "settings": {
+            "image": "shopify://shop_images/img4.jpg",
             "title": "Versatile Power Options",
             "description": "Supports wall adapter, car adapter, and cordless power pack for on-the-go relief."
           }
