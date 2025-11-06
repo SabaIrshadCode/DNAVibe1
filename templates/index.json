@@ -96,51 +96,6 @@
         "subheading": "Recognized by the leaders, for the leaders."
       }
     },
-    "awards_section_TchUp7": {
-      "type": "awards-section",
-      "blocks": {
-        "award_cFTUb3": {
-          "type": "award",
-          "settings": {
-            "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b_9b8b2377-6282-4457-807d-1628f3a6a8ba.jpg",
-            "title": "USA Today Best Gift",
-            "tag": "Award Winner"
-          }
-        },
-        "award_fUx3WJ": {
-          "type": "award",
-          "settings": {
-            "title": "WebMD Best Product",
-            "tag": "Award Winner"
-          }
-        },
-        "award_LtPpi8": {
-          "type": "award",
-          "settings": {
-            "title": "Coolest Thing Made in Colorado",
-            "tag": "Award Winner"
-          }
-        },
-        "award_A3kfxz": {
-          "type": "award",
-          "settings": {
-            "title": "Health 2.0 Outstanding Leadership",
-            "tag": "Award Winner"
-          }
-        }
-      },
-      "block_order": [
-        "award_cFTUb3",
-        "award_fUx3WJ",
-        "award_LtPpi8",
-        "award_A3kfxz"
-      ],
-      "name": "Awards Section",
-      "settings": {
-        "heading": "Awards Speak About Us More Than Us",
-        "subheading": "Recognized by the leaders, for the leaders."
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -280,7 +235,6 @@
   "order": [
     "image_banner",
     "awards_section_btfzgm",
-    "awards_section_TchUp7",
     "featured_collection",
     "image_banner_w9p3WU",
     "contact_form_UkixKM",
