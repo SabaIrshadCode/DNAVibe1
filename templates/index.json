@@ -54,6 +54,7 @@
         "award_KwBbtK": {
           "type": "award",
           "settings": {
+            "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b_9b8b2377-6282-4457-807d-1628f3a6a8ba.jpg",
             "title": "USA Today Best Gift",
             "tag": "Award Winner"
           }
@@ -61,6 +62,7 @@
         "award_i9NHty": {
           "type": "award",
           "settings": {
+            "image": "shopify://shop_images/img2.jpg",
             "title": "WebMD Best Product",
             "tag": "Award Winner"
           }
@@ -68,6 +70,7 @@
         "award_tJ3qTN": {
           "type": "award",
           "settings": {
+            "image": "shopify://shop_images/img3.jpg",
             "title": "Coolest Thing Made in Colorado",
             "tag": "Award Winner"
           }
@@ -75,6 +78,7 @@
         "award_dJNYFb": {
           "type": "award",
           "settings": {
+            "image": "shopify://shop_images/img4.jpg",
             "title": "Health 2.0 Outstanding Leadership",
             "tag": "Award Winner"
           }
