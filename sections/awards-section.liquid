@@ -1,8 +1,58 @@
-<section class="awards-section">
+<section 
+  class="awards-section"
+  style="
+    background:
+      {% if section.settings.enable_gradient %}
+        radial-gradient(
+          ellipse at center 65%, 
+          {{ section.settings.gradient_color }} -80%, 
+          {{ section.settings.section_bg_color }} 55%, 
+          #ffffff 70%
+        );
+      {% else %}
+        {{ section.settings.section_bg_color }};
+      {% endif %}
+    border: 1px solid {{ section.settings.border_color }};
+    border-radius: {{ section.settings.border_radius }}px;
+  "
+>
   <div class="container-wrapper">
     <div class="content-container">
-      <h2 class="section-title">{{ section.settings.heading }}</h2>
-      <p class="section-subtitle">{{ section.settings.subheading }}</p>
+      <h2 
+        class="section-title"
+        style="
+          color: {{ section.settings.heading_color }};
+          background: {{ section.settings.heading_bg_color }};
+          font-family: {{ section.settings.heading_font_family }};
+          font-weight: {{ section.settings.heading_font_weight }};
+          font-size: {{ section.settings.heading_font_size }}px;
+          line-height: {{ section.settings.heading_line_height }}px;
+          letter-spacing: {{ section.settings.heading_letter_spacing }}px;
+          font-style: {{ section.settings.heading_font_style }};
+          text-decoration: {{ section.settings.heading_text_decoration }};
+          text-shadow: {{ section.settings.heading_text_shadow }};
+        "
+      >
+        {{ section.settings.heading }}
+      </h2>
+
+      <p 
+        class="section-subtitle"
+        style="
+          color: {{ section.settings.subheading_color }};
+          background: {{ section.settings.subheading_bg_color }};
+          font-family: {{ section.settings.subheading_font_family }};
+          font-weight: {{ section.settings.subheading_font_weight }};
+          font-size: {{ section.settings.subheading_font_size }}px;
+          line-height: {{ section.settings.subheading_line_height }}px;
+          letter-spacing: {{ section.settings.subheading_letter_spacing }}px;
+          font-style: {{ section.settings.subheading_font_style }};
+          text-decoration: {{ section.settings.subheading_text_decoration }};
+          text-shadow: {{ section.settings.subheading_text_shadow }};
+        "
+      >
+        {{ section.settings.subheading }}
+      </p>
     </div>
 
     <div class="awards-grid">
@@ -21,19 +71,12 @@
   </div>
 
   <style>
-    /* Your same CSS copied here (optional: move to theme.css if preferred) */
     .awards-section {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 90px 0px;
-      background: radial-gradient(
-        ellipse at center 65%,
-        #db2777 -80%,
-        #fff3f8 55%,
-        #ffffff 70%
-      );
     }
     .container-wrapper {
       width: 1280px;
@@ -48,23 +91,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-    }
-    .section-title {
-      font-size: 48px;
-      line-height: 48px;
-      font-family: Inter, sans-serif;
-      font-weight: 600;
-      color: #0e0f11;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    .section-subtitle {
-      font-family: Geist, sans-serif;
-      color: #0a0a0a;
-      font-size: 20px;
-      line-height: 28px;
-      text-align: center;
-      font-weight: 400;
     }
     .awards-grid {
       width: 100%;
@@ -85,9 +111,9 @@
     }
     .award-card img {
       width: 100%;
-      display: block;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
     .award-card::before {
       content: "";
@@ -106,7 +132,6 @@
       bottom: 8%;
       left: 10%;
       color: #fff;
-      text-align: left;
       display: flex;
       flex-direction: column;
       gap: 13.6px;
@@ -126,53 +151,6 @@
       text-transform: uppercase;
       letter-spacing: 0.6px;
     }
-
-    @media (max-width: 1024px) {
-      .awards-section {
-        padding: 50px 15px;
-      }
-      .container-wrapper {
-        gap: 40px;
-      }
-      .awards-grid {
-        grid-template-columns: repeat(2, 49%);
-        gap: 20px;
-      }
-      .award-card {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .awards-section {
-        padding: 40px 10px;
-      }
-      .section-title {
-        font-size: 32px;
-        line-height: 36px;
-        margin-bottom: 10px;
-      }
-      .container-wrapper {
-        gap: 30px;
-      }
-      .awards-grid {
-        grid-template-columns: repeat(2, 49%);
-        gap: 10px;
-      }
-      .award-card {
-        height: 250px;
-      }
-      .award-info {
-        bottom: 15px;
-        left: 15px;
-        gap: 10px;
-        padding-right: 5px;
-      }
-      .award-info h3 {
-        font-size: 16px;
-        line-height: 20px;
-      }
-    }
   </style>
 
   {% schema %}
@@ -180,16 +158,232 @@
     "name": "Awards Section",
     "settings": [
       {
+        "type": "color",
+        "id": "section_bg_color",
+        "label": "Section Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "gradient_color",
+        "label": "Radial Gradient Color",
+        "default": "#db2777"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_gradient",
+        "label": "Enable Radial Gradient Background",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Section Border Color",
+        "default": "#cccccc"
+      },
+      {
+        "type": "range",
+        "id": "border_radius",
+        "label": "Section Border Radius (px)",
+        "default": 0,
+        "min": 0,
+        "max": 50,
+        "step": 1
+      },
+      {
         "type": "text",
         "id": "heading",
         "label": "Section Heading",
         "default": "Awards Speak About Us More Than Us"
       },
       {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Text Color",
+        "default": "#0e0f11"
+      },
+      {
+        "type": "color",
+        "id": "heading_bg_color",
+        "label": "Heading Background Color",
+        "default": "transparent"
+      },
+      {
+        "type": "select",
+        "id": "heading_font_family",
+        "label": "Heading Font Family",
+        "default": "Inter",
+        "options": [
+          { "value": "Inter", "label": "Inter" },
+          { "value": "Poppins", "label": "Poppins" },
+          { "value": "Roboto", "label": "Roboto" },
+          { "value": "Montserrat", "label": "Montserrat" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "heading_font_size",
+        "label": "Heading Font Size (px)",
+        "default": 48,
+        "min": 10,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "heading_line_height",
+        "label": "Heading Line Height (px)",
+        "default": 48,
+        "min": 10,
+        "max": 120,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "heading_letter_spacing",
+        "label": "Heading Letter Spacing (px)",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "type": "select",
+        "id": "heading_font_weight",
+        "label": "Heading Font Weight",
+        "default": "600",
+        "options": [
+          { "value": "400", "label": "Normal" },
+          { "value": "500", "label": "Medium" },
+          { "value": "600", "label": "Semi Bold" },
+          { "value": "700", "label": "Bold" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "heading_font_style",
+        "label": "Heading Font Style",
+        "default": "normal",
+        "options": [
+          { "value": "normal", "label": "Normal" },
+          { "value": "italic", "label": "Italic" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "heading_text_decoration",
+        "label": "Heading Text Decoration",
+        "default": "none",
+        "options": [
+          { "value": "none", "label": "None" },
+          { "value": "underline", "label": "Underline" },
+          { "value": "overline", "label": "Overline" },
+          { "value": "line-through", "label": "Line Through" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "heading_text_shadow",
+        "label": "Heading Text Shadow (e.g. 2px 2px 4px #000000)",
+        "default": ""
+      },
+      {
         "type": "text",
         "id": "subheading",
         "label": "Section Subheading",
         "default": "Recognized by the leaders, for the leaders."
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Subheading Text Color",
+        "default": "#0a0a0a"
+      },
+      {
+        "type": "color",
+        "id": "subheading_bg_color",
+        "label": "Subheading Background Color",
+        "default": "transparent"
+      },
+      {
+        "type": "select",
+        "id": "subheading_font_family",
+        "label": "Subheading Font Family",
+        "default": "Geist",
+        "options": [
+          { "value": "Inter", "label": "Inter" },
+          { "value": "Poppins", "label": "Poppins" },
+          { "value": "Roboto", "label": "Roboto" },
+          { "value": "Montserrat", "label": "Montserrat" },
+          { "value": "Geist", "label": "Geist" }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "subheading_font_size",
+        "label": "Subheading Font Size (px)",
+        "default": 20,
+        "min": 10,
+        "max": 60,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "subheading_line_height",
+        "label": "Subheading Line Height (px)",
+        "default": 28,
+        "min": 10,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "subheading_letter_spacing",
+        "label": "Subheading Letter Spacing (px)",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "type": "select",
+        "id": "subheading_font_weight",
+        "label": "Subheading Font Weight",
+        "default": "400",
+        "options": [
+          { "value": "400", "label": "Normal" },
+          { "value": "500", "label": "Medium" },
+          { "value": "600", "label": "Semi Bold" },
+          { "value": "700", "label": "Bold" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "subheading_font_style",
+        "label": "Subheading Font Style",
+        "default": "normal",
+        "options": [
+          { "value": "normal", "label": "Normal" },
+          { "value": "italic", "label": "Italic" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "subheading_text_decoration",
+        "label": "Subheading Text Decoration",
+        "default": "none",
+        "options": [
+          { "value": "none", "label": "None" },
+          { "value": "underline", "label": "Underline" },
+          { "value": "overline", "label": "Overline" },
+          { "value": "line-through", "label": "Line Through" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "subheading_text_shadow",
+        "label": "Subheading Text Shadow (e.g. 2px 2px 4px #000000)",
+        "default": ""
       }
     ],
     "blocks": [
