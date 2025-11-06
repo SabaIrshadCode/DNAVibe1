@@ -188,7 +188,7 @@
     }
   </style>
 
-  {% schema %}
+ {% schema %}
 {
   "name": "Awards Section",
   "settings": [
@@ -226,25 +226,25 @@
           "id": "tag",
           "label": "Award Tag",
           "default": "Award Winner"
+        },
+        {
+          "type": "color",
+          "id": "tag_color",
+          "label": "Tag Text Color",
+          "default": "#E31C79"
+        },
+        {
+          "type": "select",
+          "id": "tag_transform",
+          "label": "Tag Text Transform",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "uppercase", "label": "Uppercase" },
+            { "value": "capitalize", "label": "Capitalize" },
+            { "value": "lowercase", "label": "Lowercase" }
+          ],
+          "default": "none"
         }
-          {
-        "type": "color",
-        "id": "tag_color",
-        "label": "Tag Text Color",
-        "default": "#E31C79"
-      },
-      {
-        "type": "select",
-        "id": "tag_transform",
-        "label": "Tag Text Transform",
-        "options": [
-          { "value": "none", "label": "None" },
-          { "value": "uppercase", "label": "Uppercase" },
-          { "value": "capitalize", "label": "Capitalize" },
-          { "value": "lowercase", "label": "Lowercase" }
-        ],
-        "default": "Uppercase"
-      }
       ]
     }
   ],
@@ -286,5 +286,6 @@
   ]
 }
 {% endschema %}
+
 
 </section>
