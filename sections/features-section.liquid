@@ -62,16 +62,13 @@
 
     }
     .features-grid {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
-      max-width: 1280px; /* ya jitna section width chahiye */
-      margin: 0 auto;
-      justify-content: center; /* ye grid ke content ko center karega */
-      align-items: start;
     }
     .feature-card {
+      flex: 1 1 250px;
       position: relative;
       width: 100%;
       max-width: 302px;
