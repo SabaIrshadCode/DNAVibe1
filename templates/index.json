@@ -166,20 +166,12 @@
             "title": "Flexible, Wearable Design",
             "description": "Features a flush-fit silicone construction that conforms to various body parts."
           }
-        },
-        "feature_mnjxG7": {
-          "type": "feature",
-          "settings": {
-            "title": "Versatile Power Options",
-            "description": "Supports wall adapter, car adapter, and cordless power pack for on-the-go relief."
-          }
         }
       },
       "block_order": [
         "feature_pdTyGQ",
         "feature_P6YYTt",
-        "feature_DHfFYN",
-        "feature_mnjxG7"
+        "feature_DHfFYN"
       ],
       "name": "Features Section",
       "settings": {
