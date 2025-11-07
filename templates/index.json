@@ -57,8 +57,8 @@
             "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b_9b8b2377-6282-4457-807d-1628f3a6a8ba.jpg",
             "title": "USA Today Best Gift",
             "tag": "Award Winner",
-            "tag_color": "#e31c79",
-            "tag_transform": "none"
+            "tag_color": "#ab547c",
+            "tag_transform": "uppercase"
           }
         },
         "award_i9NHty": {
