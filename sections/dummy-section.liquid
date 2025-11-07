@@ -1,161 +1,50 @@
-<section class="final-section">
-  <div class="overlay"></div>
+<section class="dummy-section">
   <div class="container">
     <h2>{{ section.settings.heading }}</h2>
-    <p>{{ section.settings.paragraph }}</p>
-    <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+    <p>{{ section.settings.text }}</p>
   </div>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    .final-section {
-      position: relative;
-      width: 100%;
-      background: url("/assets/sectionbg.jpg") center/cover no-repeat;
-      overflow: hidden;
-      padding: 90px 0px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .dummy-section {
+      padding: 80px 20px;
+      background-color: #fce4ec;
       text-align: center;
     }
 
-    .final-section .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.6) 50%,
-        rgba(0, 0, 0, 0.8) 100%
-      );
-      z-index: 1;
+    .dummy-section h2 {
+      color: #ec0d87;
+      font-size: 32px;
+      margin-bottom: 10px;
+      font-family: Arial, sans-serif;
     }
 
-    .final-section .container {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      width: 100%;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .final-section h2 {
-      font-size: 30px;
-      line-height: 36px;
-      font-weight: 700;
-      font-family: Inter, sans-serif;
-      text-transform: uppercase;
-      color: #ffffff;
-    }
-
-    .final-section p {
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: 400;
-      font-family: Inter, sans-serif;
-      color: #9ca3af;
-      padding-top: 10px;
-      padding-bottom: 16px;
-    }
-
-    .final-section .btn {
-      background-color: #ec0d87;
-      color: white;
-      border: none;
-      padding: 11px 30px;
+    .dummy-section p {
+      color: #555;
       font-size: 18px;
-      line-height: 28px;
-      font-weight: 400;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0px 1px 2px 0px #ec0d87;
-      display: inline-block;
-      width: auto;
-      text-decoration: none;
-      font-family: Geist, sans-serif;
-      transition: all 0.3s ease;
-    }
-
-    .final-section .btn:hover {
-      background: linear-gradient(
-        45deg,
-        #d30975 0%,
-        #ef0c8d 50%,
-        #f155a6 100%
-      );
-      box-shadow: 0px 4px 10px rgba(236, 13, 135, 0.5);
-    }
-
-    @media (max-width: 1024px) {
-      .final-section {
-        padding: 50px 15px;
-      }
-      .final-section .container {
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .final-section {
-        padding: 40px 10px;
-      }
-      .final-section p {
-        width: 100%;
-        padding-top: 0;
-        padding-bottom: 5px;
-      }
+      font-family: Arial, sans-serif;
     }
   </style>
 
   {% schema %}
   {
-    "name": "Dummy Section",
+    "name": "Dummy Test Section",
     "settings": [
       {
         "type": "text",
         "id": "heading",
         "label": "Heading",
-        "default": "Recover Faster. Live Freely."
+        "default": "This is a Dummy Section"
       },
       {
         "type": "text",
-        "id": "paragraph",
-        "label": "Paragraph",
-        "default": "Trusted by athletes and everyday heroes alike."
-      },
-      {
-        "type": "text",
-        "id": "button_text",
-        "label": "Button Text",
-        "default": "Get Yours Today"
-      },
-      {
-        "type": "url",
-        "id": "button_link",
-        "label": "Button Link",
-        "default": "#"
+        "id": "text",
+        "label": "Paragraph Text",
+        "default": "If you can see this, your custom sections are working!"
       }
     ],
     "presets": [
       {
-        "name": "Dummy Section",
-        "settings": {
-          "heading": "Recover Faster. Live Freely.",
-          "paragraph": "Trusted by athletes and everyday heroes alike.",
-          "button_text": "Get Yours Today",
-          "button_link": "#"
-        }
+        "name": "Dummy Test Section"
       }
     ]
   }
