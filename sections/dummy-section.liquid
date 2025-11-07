@@ -1,0 +1,52 @@
+<section class="dummy-section">
+  <div class="container">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.text }}</p>
+  </div>
+
+  <style>
+    .dummy-section {
+      padding: 80px 20px;
+      background-color: #fce4ec;
+      text-align: center;
+    }
+
+    .dummy-section h2 {
+      color: #ec0d87;
+      font-size: 32px;
+      margin-bottom: 10px;
+      font-family: Arial, sans-serif;
+    }
+
+    .dummy-section p {
+      color: #555;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+
+  {% schema %}
+  {
+    "name": "Dummy Test Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "This is a Dummy Section"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Paragraph Text",
+        "default": "If you can see this, your custom sections are working!"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Dummy Test Section"
+      }
+    ]
+  }
+  {% endschema %}
+</section>
