@@ -107,6 +107,17 @@
         "button_link": "https://www.google.com/"
       }
     },
+    "recover_section_mNq6Jy": {
+      "type": "recover-section",
+      "name": "Recover Faster Section",
+      "settings": {
+        "background_image": "shopify://shop_images/sectionbg.jpg",
+        "heading": "Recover Faster. Live Freely.",
+        "paragraph": "Trusted by athletes and everyday heroes alike.",
+        "button_text": "Get Yours Today",
+        "button_link": "/"
+      }
+    },
     "features_section_C98rfG": {
       "type": "features-section",
       "blocks": {
@@ -416,6 +427,7 @@
     "image_banner",
     "awards_section_btfzgm",
     "recover_section_fdHYcm",
+    "recover_section_mNq6Jy",
     "features_section_C98rfG",
     "features_section_QGD8kP",
     "featured_collection",
