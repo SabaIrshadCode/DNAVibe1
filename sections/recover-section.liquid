@@ -1,0 +1,157 @@
+<section class="recover-section">
+  <div class="overlay"></div>
+  <div class="container">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.paragraph }}</p>
+    <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+  </div>
+
+  <style>
+  *{
+    margin:0;
+    padding:0;
+  }
+    .recover-section {
+      position: relative;
+      width: 100%;
+      background: url("{{ 'sectionbg.jpg' | asset_url }}") center/cover no-repeat;
+      overflow: hidden;
+      padding: 90px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .recover-section .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.6) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+      );
+      z-index: 1;
+    }
+
+    .recover-section .container {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      width: 100%;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .recover-section h2 {
+      font-size: 30px;
+      line-height: 36px;
+      font-weight: 700;
+      font-family: Inter, sans-serif;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .recover-section p {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      font-family: Inter, sans-serif;
+      color: #9ca3af;
+      padding-top: 10px;
+      padding-bottom: 16px;
+    }
+
+    .recover-section .btn {
+      background-color: #ec0d87;
+      color: white;
+      border: none;
+      padding: 11px 30px;
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 400;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0px 1px 2px 0px #ec0d87;
+      display: inline-block;
+      width: auto;
+      text-decoration: none;
+      font-family: Geist, sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .recover-section .btn:hover {
+      background: linear-gradient(45deg, #d30975 0%, #ef0c8d 50%, #f155a6 100%);
+      box-shadow: 0px 4px 10px rgba(236, 13, 135, 0.5);
+    }
+
+    @media (max-width: 1024px) {
+      .recover-section {
+        padding: 50px 15px;
+      }
+      .recover-section .container {
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .recover-section {
+        padding: 40px 10px;
+      }
+      .recover-section p {
+        width: 100%;
+        padding-top: 0;
+        padding-bottom: 5px;
+      }
+    }
+  </style>
+
+  {% schema %}
+  {
+    "name": "Recover Faster Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Recover Faster. Live Freely."
+      },
+      {
+        "type": "text",
+        "id": "paragraph",
+        "label": "Paragraph",
+        "default": "Trusted by athletes and everyday heroes alike."
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Get Yours Today"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link",
+        "default": "/"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Recover Faster Section",
+        "category": "Custom Sections",
+        "settings": {
+          "heading": "Recover Faster. Live Freely.",
+          "paragraph": "Trusted by athletes and everyday heroes alike.",
+          "button_text": "Get Yours Today",
+          "button_link": "/"
+        }
+      }
+    ]
+  }
+  {% endschema %}
+</section>
