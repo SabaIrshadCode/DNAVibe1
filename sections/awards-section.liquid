@@ -129,11 +129,11 @@
       color:white;
     }
     .award-info .tag {
-      color: {{ block.settings.tag_color }};
+      color: E31C79;
       font-size: 12px;
       line-height: 16px;
       font-family: Inter, sans-serif;
-      text-transform: {{ block.settings.tag_transform }};
+      text-transform: uppercase;
       letter-spacing: 0.6px;
     }
 
@@ -228,24 +228,6 @@
           "label": "Award Tag",
           "default": "Award Winner"
         },
-        {
-          "type": "color",
-          "id": "tag_color",
-          "label": "Tag Text Color",
-          "default": "#E31C79"
-        },
-        {
-          "type": "select",
-          "id": "tag_transform",
-          "label": "Tag Text Transform",
-          "options": [
-            { "value": "none", "label": "None" },
-            { "value": "uppercase", "label": "Uppercase" },
-            { "value": "capitalize", "label": "Capitalize" },
-            { "value": "lowercase", "label": "Lowercase" }
-          ],
-          "default": "uppercase"
-        }
       ]
     }
   ],
