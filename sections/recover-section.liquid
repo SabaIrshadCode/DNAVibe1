@@ -1,4 +1,13 @@
-<section class="recover-section">
+<section 
+  class="recover-section"
+  style="
+    {% if section.settings.background_image != blank %}
+      background: url('{{ section.settings.background_image | image_url: width: 1600 }}') center/cover no-repeat;
+    {% else %}
+      background: url('{{ 'sectionbg.jpg' | asset_url }}') center/cover no-repeat;
+    {% endif %}
+  "
+>
   <div class="overlay"></div>
   <div class="container">
     <h2>{{ section.settings.heading }}</h2>
@@ -7,20 +16,21 @@
   </div>
 
   <style>
-  *{
-    margin:0;
-    padding:0;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
     .recover-section {
       position: relative;
       width: 100%;
-      background:background: url("{{ 'sectionbg.jpg' | asset_url }}") center/cover no-repeat;
       overflow: hidden;
       padding: 90px 0px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      color: #fff;
     }
 
     .recover-section .overlay {
@@ -40,7 +50,6 @@
       z-index: 2;
       max-width: 800px;
       width: 100%;
-      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -62,7 +71,7 @@
       line-height: 24px;
       font-weight: 400;
       font-family: Inter, sans-serif;
-      color: #9ca3af;
+      color: #d1d5db;
       padding-top: 10px;
       padding-bottom: 16px;
     }
@@ -115,11 +124,11 @@
   {
     "name": "Recover Faster Section",
     "settings": [
-         {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background Image"
-    },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
       {
         "type": "text",
         "id": "heading",
@@ -148,13 +157,7 @@
     "presets": [
       {
         "name": "Recover Faster Section",
-        "category": "Custom Sections",
-        "settings": {
-          "heading": "Recover Faster. Live Freely.",
-          "paragraph": "Trusted by athletes and everyday heroes alike.",
-          "button_text": "Get Yours Today",
-          "button_link": "/"
-        }
+        "category": "Custom Sections"
       }
     ]
   }
