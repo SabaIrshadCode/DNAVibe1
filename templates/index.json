@@ -100,7 +100,7 @@
       "type": "recover-section",
       "name": "Recover Faster Section",
       "settings": {
-        "background_image": "shopify://shop_images/img4.jpg",
+        "background_image": "shopify://shop_images/sectionbg.jpg",
         "heading": "Recover Faster. Live Freely.",
         "paragraph": "Trusted by athletes and everyday heroes alike.",
         "button_text": "Get Yours Today",
