@@ -96,7 +96,7 @@
         "subheading": "Recognized by the leaders, for the leaders."
       }
     },
-    "recover_section_EyQkcV": {
+    "recover_section_fdHYcm": {
       "type": "recover-section",
       "name": "Recover Faster Section",
       "settings": {
@@ -104,17 +104,7 @@
         "heading": "Recover Faster. Live Freely.",
         "paragraph": "Trusted by athletes and everyday heroes alike.",
         "button_text": "Get Yours Today",
-        "button_link": "/"
-      }
-    },
-    "recover_section_6Xxy7F": {
-      "type": "recover-section",
-      "name": "Recover Faster Section",
-      "settings": {
-        "heading": "Recover Faster. Live Freely.",
-        "paragraph": "Trusted by athletes and everyday heroes alike.",
-        "button_text": "Get Yours Today",
-        "button_link": "/"
+        "button_link": "https://www.google.com/"
       }
     },
     "features_section_C98rfG": {
@@ -425,8 +415,7 @@
   "order": [
     "image_banner",
     "awards_section_btfzgm",
-    "recover_section_EyQkcV",
-    "recover_section_6Xxy7F",
+    "recover_section_fdHYcm",
     "features_section_C98rfG",
     "features_section_QGD8kP",
     "featured_collection",
