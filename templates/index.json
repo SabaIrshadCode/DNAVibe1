@@ -103,7 +103,7 @@
         "bg_opacity": 0.3,
         "primary_color": "#EC0D87",
         "heading": "How it Works",
-        "content": "<p>DNA Vibe's Jazz Band isn't just a collection of LEDs...</p>",
+        "content": "<p>Unlike conventional light pads, DNA Vibe’s Jazz Band isn’t just a<br/>collection of LEDs. It’s a patented breakthrough in wearable<br/>wellness that is optimized to fit all body parts.</p><p>At its core, Harmonic Vibration technology is designed to work in<br/>perfect harmony with your DNA. This natural harmony unlocks<br/>your body’s regenerative power, helping you feel better, recover<br/>faster, and move with less pain.</p>",
         "button_label": "See the technology in action",
         "button_url": ""
       }
