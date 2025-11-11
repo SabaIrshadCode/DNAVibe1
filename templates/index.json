@@ -65,7 +65,7 @@
           "settings": {
             "title": "Instant Comfort (Immediate)",
             "text": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain.",
-            "icon_style": "outline",
+            "icon_style": "filled",
             "icon_svg": ""
           }
         },
@@ -83,7 +83,7 @@
           "settings": {
             "title": "Instant Comfort (Immediate)",
             "text": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain.",
-            "icon_style": "outline",
+            "icon_style": "filled",
             "icon_svg": ""
           }
         }
