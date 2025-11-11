@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "faq_light_therapy_PNNTUW": {
+      "type": "faq-light-therapy",
+      "name": "FAQ Section with Background Video Option",
+      "settings": {
+        "heading": "Light Years Beyond Light Therapy",
+        "subheading": "Here is a look at how the Jazz Band will transform your life."
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -65,7 +73,7 @@
           "settings": {
             "title": "Instant Comfort (Immediate)",
             "text": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain.",
-            "icon_style": "outline",
+            "icon_style": "filled",
             "icon_svg": ""
           }
         },
@@ -83,7 +91,7 @@
           "settings": {
             "title": "Instant Comfort (Immediate)",
             "text": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain.",
-            "icon_style": "outline",
+            "icon_style": "filled",
             "icon_svg": ""
           }
         }
@@ -96,14 +104,15 @@
       ],
       "name": "How It Works - DNA Vibe",
       "settings": {
-        "bg_color_start": "#3C0D22",
+        "bg_color_start": "#3c0d22",
         "bg_color_center": "#202123",
-        "bg_color_blend": "#2E1723",
-        "bg_color_end": "#3C0D22",
+        "bg_color_blend": "#2e1723",
+        "bg_color_end": "#3c0d22",
+        "bg_video": "shopify://files/videos/0caa33e33ca84713b797903780883f76.mp4",
         "bg_opacity": 0.3,
-        "primary_color": "#EC0D87",
+        "primary_color": "#ec0d87",
         "heading": "How it Works",
-        "content": "<p>DNA Vibe's Jazz Band isn't just a collection of LEDs...</p>",
+        "content": "<p>Unlike conventional light pads, DNA Vibe’s Jazz Band isn’t just a<br/>collection of LEDs. It’s a patented breakthrough in wearable<br/>wellness that is optimized to fit all body parts.</p><p>At its core, Harmonic Vibration technology is designed to work in<br/>perfect harmony with your DNA. This natural harmony unlocks<br/>your body’s regenerative power, helping you feel better, recover<br/>faster, and move with less pain.</p>",
         "button_label": "See the technology in action",
         "button_url": ""
       }
@@ -154,6 +163,14 @@
       "settings": {
         "heading": "Awards Speak About Us More Than Us",
         "subheading": "Recognized by the leaders, for the leaders."
+      }
+    },
+    "faq_light_therapy_aPDBPz": {
+      "type": "faq-light-therapy",
+      "name": "FAQ Section with Background Video Option",
+      "settings": {
+        "heading": "Light Years Beyond Light Therapy",
+        "subheading": "Here is a look at how the Jazz Band will transform your life."
       }
     },
     "recover_section_fdHYcm": {
@@ -381,9 +398,6 @@
         "faq_item_8BC6nB": {
           "type": "faq_item",
           "settings": {
-            "left_icon": "shopify://shop_images/img4.jpg",
-            "plus_icon": "shopify://shop_images/img3.jpg",
-            "minus_icon": "shopify://shop_images/img2.jpg",
             "title": "Example Title",
             "text": "Your description goes here."
           }
@@ -412,8 +426,7 @@
       "settings": {
         "heading": "Light Years Beyond Light Therapy",
         "subheading": "Here is a look at how the Jazz Band will transform your life.",
-        "bg_image": "shopify://shop_images/sectionbg.jpg",
-        "side_image": "shopify://shop_images/img4.jpg"
+        "bg_video": "shopify://files/videos/0caa33e33ca84713b797903780883f76.mp4"
       }
     },
     "image_banner_w9p3WU": {
@@ -525,9 +538,11 @@
     }
   },
   "order": [
+    "faq_light_therapy_PNNTUW",
     "image_banner",
     "how_its_work_m9XBDA",
     "awards_section_btfzgm",
+    "faq_light_therapy_aPDBPz",
     "recover_section_fdHYcm",
     "recover_section_mNq6Jy",
     "features_section_C98rfG",
