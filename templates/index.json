@@ -108,6 +108,7 @@
         "bg_color_center": "#202123",
         "bg_color_blend": "#2e1723",
         "bg_color_end": "#3c0d22",
+        "bg_video": "shopify://files/videos/0caa33e33ca84713b797903780883f76.mp4",
         "bg_opacity": 0.3,
         "primary_color": "#ec0d87",
         "heading": "How it Works",
