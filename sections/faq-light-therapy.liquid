@@ -1,0 +1,378 @@
+<section class="main-con-with-bg-overly">
+  {% if section.settings.bg_video != blank %}
+    {{ section.settings.bg_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'bg-video' }}
+  {% endif %}
+  <div class="inner-con">
+    <div class="text-con">
+      <h2 class="fade-in-up">{{ section.settings.heading }}</h2>
+      <p class="fade-in-up">{{ section.settings.subheading }}</p>
+    </div>
+    <div class="main-con">
+      <div class="content">
+        <div class="toggle-container">
+          {% for block in section.blocks %}
+          <div class="main-toggle fade-in-up" style="animation-delay: {{ forloop.index | times: 100 | plus: 200 }}ms;">
+            <div class="togg-icon">
+              {% if block.settings.left_icon != blank %}
+                <img src="{{ block.settings.left_icon | img_url: '80x80' }}" alt="icon" class="toggle-icon" />
+              {% endif %}
+            </div>
+            <div class="tog-con">
+              <div class="toggle-item">
+                <div class="toggle-header">
+                  <div class="toggle-left">
+                    <h3 class="toggle-title">{{ block.settings.title }}</h3>
+                  </div>
+                  {% if block.settings.plus_icon != blank and block.settings.minus_icon != blank %}
+                    <img src="{{ block.settings.plus_icon | img_url: '40x40' }}" alt="plus" class="toggle-indicator plus-icon" />
+                    <img src="{{ block.settings.minus_icon | img_url: '40x40' }}" alt="minus" class="toggle-indicator minus-icon" />
+                  {% endif %}
+                </div>
+                <div class="toggle-content">
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="image-side">
+        {% if section.settings.side_image != blank %}
+          <img src="{{ section.settings.side_image | img_url: '600x' }}" alt="Device Image" class="side-image" />
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  /* Smooth easing curve - Material Design standard */
+  :root {
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out-smooth: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-smooth: cubic-bezier(0.4, 0, 1, 1);
+  }
+  .main-con-with-bg-overly {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 90px 40px;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    background: url({{ section.settings.bg_image | img_url: '1600x' }}) center/cover no-repeat;
+  }
+  /* Background video styling */
+  .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    display: {% if section.settings.bg_video != blank %}block{% else %}none{% endif %};
+  }
+  .main-con-with-bg-overly::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(82,82,82,0.75) 100%);
+    z-index: 1;
+  }
+  .inner-con {
+    z-index: 2;
+    width: 1440px;
+  }
+  .text-con {
+    z-index: 2;
+    text-align: left;
+  }
+  .text-con h2 {
+    margin-bottom: 20px;
+    color: #FFFFFF;
+  }
+  .text-con p {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    color: #FFFFFF;
+  }
+  .main-con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+  }
+  .content {
+    flex: 0 0 60%;
+    padding-right: 40px;
+  }
+  .toggle-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .main-toggle {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid rgba(255,105,180,0.4);
+    border-radius: 40px;
+    background: #3A3A3A;
+    box-shadow: 0 0 20px rgba(255,43,106,0.4);
+    transition: all 0.4s var(--ease-smooth);
+    will-change: transform, border-color, box-shadow;
+  }
+  .main-toggle:hover {
+    border-color: rgba(236, 13, 135, 0.8);
+    box-shadow: 0 0 30px rgba(255,43,106,0.6);
+    transform: translateY(-2px);
+  }
+  .togg-icon {
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    width:75px;
+    background:#323232;
+    border-radius:45px;
+    border:1px solid #4C4C4C;
+    padding-top: 15px;
+    transition: border-color 0.4s var(--ease-smooth);
+    will-change: border-color;
+  }
+  .toggle-icon {
+    width:50px;
+    height:50px;
+    object-fit:contain;
+    transition: transform 0.3s var(--ease-smooth);
+  }
+  .main-toggle.active .togg-icon {
+    border-color:#FF2B6A;
+  }
+  .main-toggle:hover .togg-icon {
+    border-color: #EC0D87;
+  }
+  .tog-con {
+    width:87%;
+  }
+  .toggle-item.active .toggle-content {
+    max-height:200px;
+    padding:0 30px 25px;
+  }
+  .toggle-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:75px;
+    padding:0 30px;
+    cursor: pointer;
+  }
+  .toggle-title {
+    color:#fff;
+    transition: color 0.3s var(--ease-smooth);
+  }
+  .toggle-indicator {
+    width:28px;
+    height:28px;
+    object-fit:contain;
+    cursor:pointer;
+    transition: transform 0.4s var(--ease-smooth), opacity 0.3s var(--ease-smooth);
+    will-change: transform, opacity;
+  }
+  .toggle-header:hover .toggle-indicator {
+    transform: scale(1.1);
+  }
+  .minus-icon {
+    display:none;
+    opacity: 0;
+  }
+  .toggle-item.active .plus-icon {
+    display:none;
+    opacity: 0;
+  }
+  .toggle-item.active .minus-icon {
+    display:block;
+    opacity: 1;
+  }
+  .toggle-content {
+    max-height:0;
+    overflow:hidden;
+    transition: max-height 0.6s var(--ease-smooth), padding 0.6s var(--ease-smooth);
+    will-change: max-height;
+  }
+  .toggle-content p {
+    color:#C1C1C1;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-smooth) 0.2s;
+  }
+  .toggle-item.active .toggle-content p {
+    opacity: 1;
+  }
+  .image-side {
+    flex: 0 0 40%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .side-image {
+    max-width:75%;
+    border-radius:15px;
+    filter:drop-shadow(0 0 30px rgba(255,43,106,0.7));
+    animation:glow 3s var(--ease-smooth) infinite alternate;
+    will-change: filter;
+  }
+  @keyframes glow {
+    from {
+      filter:drop-shadow(0 0 20px rgba(255,43,106,0.4));
+    }
+    to {
+      filter:drop-shadow(0 0 50px rgba(255,43,106,0.9));
+    }
+  }
+  /* Entrance animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s var(--ease-out-smooth) forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .fade-in-up {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .side-image {
+      animation: none;
+      filter: drop-shadow(0 0 30px rgba(255,43,106,0.7));
+    }
+  }
+  /* Responsive styles */
+  @media(min-width: 768px) and (max-width: 1024px){
+    .text-con h2{
+      font-size:36px;
+      line-height:39px;
+    }
+    .main-con{
+      flex-direction:row;
+      align-items:center;
+      padding-top: 40px;
+    }
+    .content,.image-side{
+      max-width:50%;
+      flex:0 0 100%;
+      padding-right:0;
+    }
+    .inner-con{
+      width:100%;
+    }
+    .main-con-with-bg-overly{
+      padding: 50px 15px;
+    }
+  }
+  @media(max-width:600px){
+    .main-con-with-bg-overly .inner-con{
+      width:100%;
+    }
+    .main-con{
+      flex-direction:column;
+      padding-top:20px;
+    }
+    .main-con .content,.image-side{
+      max-width:100%;
+      padding:0px;
+    }
+    .text-con p{
+      font-size:20px;
+      line-height:28px;
+    }
+    .toggle-icon{
+      width:30px;
+      height:30px;
+    }
+    .togg-icon{
+      width: 60px;
+    }
+    .toggle-header{
+      height:60px;
+      padding:0 20px;
+    }
+    .toggle-item.active .toggle-content{
+      padding: 0 20px 25px;
+    }
+    .main-con-with-bg-overly{
+      padding: 40px 10px;
+    }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mainToggles = document.querySelectorAll('.main-toggle');
+    mainToggles.forEach(mt => {
+      const header = mt.querySelector('.toggle-header');
+      const item = mt.querySelector('.toggle-item');
+      if (!header || !item) return;
+      header.addEventListener('click', () => {
+        mainToggles.forEach(other => {
+          if (other !== mt) {
+            other.classList.remove('active');
+            other.querySelector('.toggle-item').classList.remove('active');
+          }
+        });
+        const isActive = item.classList.contains('active');
+        item.classList.toggle('active', !isActive);
+        mt.classList.toggle('active', !isActive);
+      });
+    });
+    // :white_check_mark: Make the first toggle active by default
+    if (mainToggles.length > 0) {
+      mainToggles[0].classList.add('active');
+      const firstItem = mainToggles[0].querySelector('.toggle-item');
+      if (firstItem) firstItem.classList.add('active');
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Light Years Beyond Light Therapy" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Here is a look at how the Jazz Band will transform your life." },
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
+    { "type": "video", "id": "bg_video", "label": "Background Video (from Media Library)", "info": "Optional — select an MP4 video from your Shopify files." },
+    { "type": "image_picker", "id": "side_image", "label": "Right Side Image" }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "image_picker", "id": "left_icon", "label": "Left Icon Image" },
+        { "type": "image_picker", "id": "plus_icon", "label": "Plus Icon Image" },
+        { "type": "image_picker", "id": "minus_icon", "label": "Minus Icon Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Example Title" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Your description goes here." }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "FAQ Section with Background Video Option" }
+  ]
+}
+{% endschema %}
