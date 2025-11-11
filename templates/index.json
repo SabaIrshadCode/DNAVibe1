@@ -114,6 +114,7 @@
       "settings": {
         "heading": "Light Years Beyond Light Therapy",
         "subheading": "Here is a look at how the Jazz Band will transform your life.",
+        "bg_image": "shopify://shop_images/img2.jpg",
         "bg_video": "shopify://files/videos/0caa33e33ca84713b797903780883f76.mp4"
       }
     },
