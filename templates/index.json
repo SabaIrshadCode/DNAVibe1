@@ -48,6 +48,22 @@
         "show_text_below": false
       }
     },
+    "how_its_work_m9XBDA": {
+      "type": "How-its-work",
+      "name": "How It Works - DNA Vibe",
+      "settings": {
+        "bg_color_start": "#3C0D22",
+        "bg_color_center": "#202123",
+        "bg_color_blend": "#2E1723",
+        "bg_color_end": "#3C0D22",
+        "bg_opacity": 0.3,
+        "primary_color": "#EC0D87",
+        "heading": "How it Works",
+        "content": "<p>DNA Vibe's Jazz Band isn't just a collection of LEDs...</p>",
+        "button_label": "See the technology in action",
+        "button_url": ""
+      }
+    },
     "awards_section_btfzgm": {
       "type": "awards-section",
       "blocks": {
@@ -466,6 +482,7 @@
   },
   "order": [
     "image_banner",
+    "how_its_work_m9XBDA",
     "awards_section_btfzgm",
     "recover_section_fdHYcm",
     "recover_section_mNq6Jy",
