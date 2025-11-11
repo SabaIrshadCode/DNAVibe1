@@ -1,0 +1,1531 @@
+{% comment %}
+    Custom Testimonials Grid Section
+    This section uses dynamic blocks to allow clients to customize 12 testimonial cards
+    including images, video links, names, titles, and quotes.
+    It includes the necessary CSS and JavaScript for the modal functionality.
+{% endcomment %}
+
+<style>
+        /* Basic Reset and Variables */
+        :root {
+            --primary-text: #212121;
+            --secondary-text: #6b6b6b;
+            --card-bg: #f5f5f5;
+            --card-border-radius: 20px;
+            --main-font: 'Inter', sans-serif;
+            --primary-color: #cc00cc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .testi-main {
+            font-family: var(--main-font);
+            background-color: #ffffff;
+            background-image: radial-gradient(500px circle at 0% -8%, #F0B1D4 0%, rgba(240, 177, 212, 0.85) 25%, rgba(240, 177, 212, 0.3) 70%, rgba(240, 177, 212, 0) 80%);
+            background-repeat: no-repeat;
+            background-position: top left;
+            color: var(--primary-text);
+            padding: 90px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header Section */
+        .testi-main .header-section {
+            text-align: center;
+            max-width: 1440px;
+            margin-bottom: 50px;
+        }
+
+        .testi-main .header-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .testi-main .header-section h2 strong {
+            color: var(--primary-color);
+        }
+
+        .testi-main .header-section p {
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .testi-main .header-section .subtitle {
+            font-size: 18px;
+            color: #000;
+            max-width: 1010px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* Responsive Styles - Large Desktop (1440px+) */
+        @media (min-width: 1440px) {
+            .testi-main .parent {
+                max-width: 1440px;
+            }
+
+            .testi-main .header-section {
+                max-width: 1440px;
+            }
+        }
+
+        /* Responsive Styles - Desktop (1200px - 1439px) */
+        @media (min-width: 1200px) and (max-width: 1439px) {
+            .testi-main .parent {
+                max-width: 1200px;
+            }
+        }
+
+        /* Responsive Styles - Tablet (769px to 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .testi-main {
+                padding: 50px 20px;
+            }
+
+            .testi-main .header-section h2 {
+                font-size: 45px;
+            }
+
+            .testi-main .header-section p {
+                font-size: 24px;
+            }
+
+            .testi-main .header-section .subtitle {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .testi-main .parent {
+                gap: 15px;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto;
+                min-height: auto;
+            }
+
+            .testi-main .div1, .div2, .div3, .div4, .div5, .div6,
+            .div7, .div8, .div9, .div10, .div11, .div12 {
+                grid-area: auto;
+            }
+
+            .testi-main .card {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                min-height: 280px;
+            }
+
+            /* Ensure card-info stays properly positioned on images with proper separation */
+            .testi-main .card.card-image {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .testi-main .card.card-image .card-image-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .testi-main .card.card-image .card-info {
+                position: absolute;
+                z-index: 10;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+                padding: 18px 15px 15px;
+                width: 100%;
+            }
+
+            .testi-main .card.card-image-with-text .card-info {
+                position: absolute;
+                z-index: 10;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+                padding: 18px 15px 15px;
+                width: 100%;
+            }
+
+            .testi-main .card-info.info-bottom-left,
+            .card-info.info-bottom-right {
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .testi-main .card-info.info-top-left {
+                top: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+            }
+
+            /* Text cards (quote cards) - ensure they don't merge */
+            .testi-main .card.card-text .card-info {
+                position: relative;
+                background: none;
+                padding: 15px;
+            }
+
+            .testi-main .card.card-text .card-info.info-top-left {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: none;
+            }
+
+            .testi-main .card.card-text .card-info.info-bottom-right {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: none;
+            }
+
+            .testi-main .card-info .quote {
+                font-size: 25px !important;
+                line-height: 32px;
+            }
+
+            .testi-main .card-info .name {
+                font-size: 18px;
+            }
+
+            .testi-main .card-info .title {
+                font-size: 14px;
+            }
+
+            .testi-main .play-button {
+                width: 45px;
+                height: 45px;
+            }
+
+            .testi-main .play-button svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+
+
+        /* --- New Grid Layout --- */
+        .testi-main .parent {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            grid-column-gap: 15px;
+            grid-row-gap: 15px;
+            max-width: 1440px !important;
+            width: 100%;
+            margin: 0 auto;
+            min-height: 1200px;
+        }
+
+        .testi-main .div1 {
+            grid-area: 1 / 1 / 4 / 2;
+        }
+
+        .testi-main .div2 {
+            grid-area: 4 / 1 / 6 / 2;
+        }
+
+        .testi-main .div3 {
+            grid-area: 6 / 1 / 8 / 2;
+        }
+
+        .testi-main .div4 {
+            grid-area: 1 / 2 / 4 / 3;
+        }
+
+        .testi-main .div5 {
+            grid-area: 4 / 2 / 6 / 3;
+        }
+
+        .testi-main .div6 {
+            grid-area: 6 / 2 / 8 / 3;
+        }
+
+        .testi-main .div7 {
+            grid-area: 1 / 3 / 3 / 4;
+        }
+
+        .testi-main .div8 {
+            grid-area: 3 / 3 / 6 / 4;
+        }
+
+        .testi-main .div9 {
+            grid-area: 6 / 3 / 8 / 4;
+        }
+
+        .testi-main .div10 {
+            grid-area: 1 / 4 / 3 / 5;
+        }
+
+        .testi-main .div11 {
+            grid-area: 3 / 4 / 6 / 5;
+        }
+
+        .testi-main .div12 {
+            grid-area: 6 / 4 / 8 / 5;
+        }
+
+
+
+        .testi-main .div5,
+        .div9,
+        .div12 {
+            z-index: 7;
+            padding: 0px !important;
+            text-shadow: none !important;
+            width: 100%;
+        }
+
+        .testi-main .div5 .card-info,
+        .div9 .card-info,
+        .div12 .card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: none !important;
+            z-index: 10;
+            padding: 15px;
+            text-shadow: none !important;
+            width: 100%;
+        }
+
+        .testi-main .div5 .card-info.info-bottom-right .name,
+        .div9 .card-info.info-bottom-right .name,
+        .div12 .card-info.info-bottom-right .name {
+            text-align: left !important;
+            color: #000 !important;
+        }
+
+        .div5 .card-info.info-bottom-right .title,
+        .div9 .card-info.info-bottom-right .title,
+        .div12 .card-info.info-bottom-right .title {
+            text-align: left !important;
+            color: #000 !important;
+        }
+
+
+        /* Card Styling - Base */
+        .testi-main .card {
+            background-color: var(--card-bg);
+            border-radius: var(--card-border-radius);
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testi-main .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Image Card Styling */
+        .testi-main .card-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .testi-main .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--card-border-radius);
+            display: block;
+        }
+
+        .testi-main .card.card-image {
+            padding: 0;
+        }
+
+        /* Text Card Flexibility Fix */
+        .testi-main .card.card-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+        }
+
+        /* Image-with-Text Card Styling */
+        .testi-main .card.card-image-with-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 0;
+        }
+
+        .testi-main .card.card-image-with-text .card-image-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+        }
+
+        /* Info Text Styling */
+        .testi-main .card-info {
+            z-index: 7;
+            padding: 15px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        /* Image Info (Absolute) */
+        .testi-main .card.card-image .card-info,
+        .card-image-with-text .card-image-container~.card-info {
+            position: absolute;
+            color: white;
+        }
+
+        .testi-main .card-info.info-bottom-left {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            z-index: 6 !important;
+        }
+
+        .testi-main .card-info.info-bottom-left .name{
+            color: #fff;
+        }
+
+        .testi-main .card-info.info-bottom-left .title{
+            color: #fff;
+        }
+
+        .testi-main .card-info.info-top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .testi-main .card-info.info-bottom-right {
+            bottom: 0;
+            right: 0;
+            text-align: left;
+        }
+
+        .testi-main .card-info .name {
+            font-weight: 700;
+            font-size: 22.1px;
+            line-height: 1.2;
+            text-shadow: none;
+        }
+
+        .testi-main .card-info .title {
+            font-weight: 400;
+            font-size: 15.6px;
+            opacity: 0.8;
+            text-shadow: none;
+        }
+
+        .testi-main .card-info .quote {
+            font-size: 23px !important;
+            font-weight: 700;
+            line-height: 30px;
+            margin-bottom: 3px;
+            color: #000000;
+            text-shadow: none;
+        }
+
+        /* Button Styles - Base */
+        .testi-main .add-button,
+        .play-button {
+            position: absolute;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .testi-main .add-button {
+            bottom: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            color: black;
+            font-size: 1.5rem;
+            font-weight: 300;
+            z-index: 7;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .testi-main .play-button {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 7;
+        }
+
+        .testi-main .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: white;
+        }
+
+        .testi-main .play-button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .testi-main .play-button svg {
+            width: 25px;
+            height: 25px;
+            color: var(--primary-color);
+            margin: 0;
+            display: block;
+        }
+
+        /* Responsive Design - Mobile (768px and below) */
+        @media (max-width: 767px) {
+            .testi-main {
+                padding: 40px 15px !important;
+            }
+
+            .testi-main .header-section {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+
+            .testi-main .header-section h2 {
+                font-size: 29px;
+            }
+
+            .testi-main .header-section p {
+                font-size: 20px;
+            }
+
+            .testi-main .header-section .subtitle {
+                font-size: 17px;
+            }
+
+            .testi-main .parent {
+                display: flex;
+                min-height: auto;
+                flex-direction: column;
+            }
+
+            .testi-main .div1, .div2, .div3, .div4, .div5, .div6,
+            .div7, .div8, .div9, .div10, .div11, .div12 {
+                grid-area: auto;
+            }
+
+            .testi-main .card {
+                min-height: 200px;
+            }
+
+            /* Mobile card-info positioning */
+            .testi-main .card.card-image .card-image-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .testi-main .card.card-image .card-info {
+                position: absolute;
+                z-index: 10;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 70%, transparent 100%);
+                padding: 15px 12px 12px;
+                width: 100%;
+            }
+
+            .testi-main .card.card-image-with-text .card-info {
+                position: absolute;
+                z-index: 10;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 70%, transparent 100%);
+                padding: 15px 12px 12px;
+                width: 100%;
+            }
+
+            .testi-main .card-info.info-bottom-left,
+            .card-info.info-bottom-right {
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .testi-main .card-info.info-top-left {
+                top: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 70%, transparent 100%);
+            }
+
+            .testi-main .card.card-text .card-info {
+                position: relative;
+                background: none;
+                padding: 12px;
+            }
+
+            .testi-main .card.card-text .card-info.info-top-left {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: none;
+            }
+
+            .testi-main .card.card-text .card-info.info-bottom-right {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: none;
+            }
+
+            .testi-main .card-info .name {
+                font-size: 22px;
+                margin-bottom: 5px;
+            }
+
+            .testi-main .card-info .title {
+                font-size: 15px;
+            }
+
+            .testi-main .card-info .quote {
+                font-size: 25px !important;
+                line-height: 32px;
+            }
+
+            .testi-main .play-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .testi-main .play-button svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .testi-main .add-button {
+                width: 28px;
+                height: 28px;
+                font-size: 1.4rem;
+            }
+
+            .testi-main .content-modal .content-quote {
+                font-size: 35px !important;
+                padding: 0 30px !important;
+            }
+
+            .testi-main .modal-content {
+                width: 100%;
+                max-width: 100% !important;
+                height: 100vh;
+                margin: 0;
+                border-radius: 0 !important;
+            }
+
+            .testi-main .content-wrapper {
+                height: 100vh;
+                aspect-ratio: unset;
+            }
+
+            .testi-main #contentImage,
+            #modalVideo {
+                height: 100vh;
+                object-fit: contain;
+            }
+
+            .testi-main .modal-name,
+            .content-name {
+                font-size: 35px !important;
+                line-height: 1.2;
+            }
+
+            .testi-main .modal-title,
+            .content-title {
+                font-size: 25px !important;
+                line-height: 32px;
+            }
+
+            .testi-main .modal-close {
+                top: 10px !important;
+                right: 20px !important;
+            }
+
+            .testi-main .content-modal.quote-mode .content-info{
+                padding: 20px 30px !important;
+            }
+        }
+
+        /* Responsive Design - Small Mobile (480px and below) */
+        @media (max-width: 480px) {
+            .testi-main {
+                padding: 30px 10px !important;
+            }
+
+            .testi-main .header-section {
+                margin-bottom: 20px;
+            }
+
+            .testi-main .header-section h2 {
+                font-size: 24px;
+            }
+
+            .testi-main .header-section p {
+                font-size: 18px;
+            }
+
+            .testi-main .header-section .subtitle {
+                font-size: 15px;
+            }
+
+            .testi-main .parent {
+                grid-template-columns: 1fr !important;
+                grid-gap: 10px;
+            }
+
+            .testi-main .card {
+                min-height: 250px;
+            }
+
+            .testi-main .card-info .name {
+                font-size: 22px;
+                margin-bottom: 6px;
+                font-weight: 700;
+            }
+
+            .testi-main .card-info .quote {
+                font-size: 25px !important;
+                line-height: 38px !important;
+            }
+
+            .testi-main .card-info .title {
+                font-size: 18px;
+            }
+
+            .testi-main .play-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .testi-main .play-button svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .testi-main .add-button {
+                width: 25px;
+                height: 25px;
+                font-size: 1.2rem;
+            }
+
+            .testi-main .content-quote {
+                font-size: 18px;
+                padding: 0 15px;
+            }
+
+            .testi-main .modal-name,
+            .content-name {
+                font-size: 30px !important;
+            }
+
+            .testi-main .modal-title,
+            .content-title {
+                font-size: 20px !important;
+                margin: 0 !important
+            }
+
+            .testi-main .modal-close {
+                right: 20px !important;
+                top: 15px !important;
+                font-size: 30px;
+            }
+        }
+
+        /* Responsive Design - Extra Small Mobile (360px and below) */
+        @media (max-width: 360px) {
+            .testi-main {
+                padding: 20px 8px !important;
+            }
+
+            .testi-main .header-section h2 {
+                font-size: 20px;
+            }
+
+            .testi-main .header-section p {
+                font-size: 16px;
+            }
+
+            .testi-main .header-section .subtitle {
+                font-size: 14px;
+            }
+
+            .testi-main .card-info .quote {
+                font-size: 18px !important;
+                line-height: 24px;
+            }
+
+            .testi-main .content-quote {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+        }
+
+
+        /* Content Modal Styles */
+        .testi-main .content-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .testi-main .content-modal .modal-content {
+            position: relative;
+            width: 1100px;
+            max-width: 95%;
+            margin: auto;
+            z-index: 2;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .testi-main .content-modal .content-wrapper {
+            width: 100%;
+            aspect-ratio: 16/9;
+            position: relative;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testi-main .content-modal #contentImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .testi-main .content-modal .content-quote {
+            display: none;
+            color: #000;
+            padding: 0px;
+            font-size: 50px;
+            line-height: 1.3;
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .testi-main .content-modal .content-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+        }
+
+        /* Transparent background for quote modals */
+        .testi-main .content-modal.quote-mode .content-info {
+            background: transparent;
+            padding: 20px 50px;
+        }
+
+        .testi-main .content-modal .content-name {
+            color: #fff;
+            font-size: 48px;
+            line-height: 48px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .testi-main .content-modal .content-title {
+            font-size: 25px;
+            opacity: 0.8;
+            margin: 4px 0 0;
+        }
+
+
+        /* Modal Base Styles */
+        .video-modal,
+        .content-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .modal-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+        }
+
+        .modal-content {
+            position: relative;
+            width: 1000px;
+            max-width: 95%;
+            margin: auto;
+            z-index: 2;
+            border-radius: var(--card-border-radius);
+            background: #000;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 0px;
+            right: 20px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        #modalVideo,
+        #modalImage {
+            width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+
+        #modalVideo {
+            display: block;
+        }
+
+        #modalImage {
+            aspect-ratio: 16 / 9;
+            display: none;
+        }
+
+        .has-image #modalImage {
+            display: block;
+        }
+
+        .has-image #modalVideo {
+            display: none;
+        }
+
+        .has-video #modalImage {
+            display: none;
+        }
+
+        .has-video #modalVideo {
+            display: block;
+        }
+
+        /* Video Controls */
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .video-info {
+            color: white;
+        }
+
+        .modal-name {
+            color: #fff;
+            font-size: 48px;
+            line-height: 48px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .modal-title {
+            font-size: 25px;
+            opacity: 0.8;
+            margin: 4px 0 0;
+        }
+
+        /* Control Buttons */
+        .control-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .control-buttons button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .control-buttons button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .control-buttons svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Play/Pause Button States */
+        #playPauseBtn .pause-icon,
+        #playPauseBtn.paused .play-icon {
+            display: block;
+        }
+
+        #playPauseBtn .play-icon,
+        #playPauseBtn.paused .pause-icon {
+            display: none;
+        }
+
+        /* Mute Button States */
+        #muteBtn .unmute-icon {
+            display: block;
+        }
+
+        #muteBtn .mute-icon {
+            display: none;
+        }
+
+        #muteBtn.sound-on .unmute-icon {
+            display: none;
+        }
+
+        #muteBtn.sound-on .mute-icon {
+            display: block;
+        }
+
+        /* Video cards par maujood add button ko chupa dein */
+
+        .card-video .add-button {
+            display: none !important;
+        }
+    </style>
+<div class="testi-main">
+<div class="header-section">
+    <h2>{{ section.settings.heading | newline_to_br }}</h2>
+    <p>{{ section.settings.subheading_line_1 }}</p>
+    <p class="subtitle">{{ section.settings.subheading_line_2 }}</p>
+</div>
+
+<div class="parent">
+    {% for block in section.blocks %}
+        {% assign is_video = false %}
+        {% if block.settings.video_url != blank %}
+            {% assign is_video = true %}
+        {% endif %}
+        
+        {% assign is_quote_card = false %}
+        {% if block.settings.image == blank and block.settings.quote != blank %}
+            {% assign is_quote_card = true %}
+        {% endif %}
+
+        {% assign card_class = 'card' %}
+        {% if is_video %}
+            {% assign card_class = card_class | append: ' card-video' %}
+        {% elsif is_quote_card %}
+             {% assign card_class = card_class | append: ' card-text' %}
+        {% else %}
+            {% assign card_class = card_class | append: ' card-image' %}
+        {% endif %}
+
+        <div class="{{ card_class }} div{{ forloop.index }}"
+             {% if is_video %}data-video="{{ block.settings.video_url }}"{% endif %}
+             {% if block.settings.custom_bg_color != blank %}style="background-color: {{ block.settings.custom_bg_color }};"{% endif %}
+             {{ block.shopify_attributes }}>
+
+            {% if block.settings.image != blank %}
+                <div class="card-image-container">
+                    {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'card-image', alt: block.settings.name }}
+                </div>
+            {% endif %}
+
+            {% if is_video %}
+                <div class="play-button" onclick="playVideo(this)">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                </div>
+            {% endif %}
+
+            {% if block.settings.quote != blank %}
+                {% assign quote_position = 'info-top-left' %}
+                {% if is_quote_card %}
+                    {% assign name_position = 'info-bottom-right' %}
+                {% else %}
+                    {% assign name_position = 'info-bottom-left' %}
+                {% endif %}
+                
+                {% if is_quote_card %}
+                    <div class="card-info {{ quote_position }}">
+                        <p class="quote">"{{ block.settings.quote }}"</p>
+                    </div>
+                {% endif %}
+
+                <div class="card-info {{ name_position }}">
+                    {% unless is_quote_card %}
+                        <p class="name">{{ block.settings.name }}</p>
+                        <p class="title">{{ block.settings.title }}</p>
+                    {% else %}
+                        <p class="name">{{ block.settings.name }}</p>
+                        <p class="title">{{ block.settings.title }}</p>
+                    {% endunless %}
+                </div>
+                
+            {% else %}
+                <div class="card-info info-bottom-left">
+                    <p class="name">{{ block.settings.name }}</p>
+                    <p class="title">{{ block.settings.title }}</p>
+                </div>
+            {% endif %}
+
+            <button class="add-button" onclick="openContentModalFromBlock(this.closest('.card'))">+</button>
+        </div>
+    {% endfor %}
+</div>
+
+<div id="videoModal" class="video-modal">
+    <div class="modal-bg"></div>
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <video id="modalVideo" playsinline controls></video>
+        <div class="video-controls">
+            <div class="video-info">
+                <p class="modal-name"></p>
+                <p class="modal-title"></p>
+            </div>
+            <div class="control-buttons">
+                <button id="playPauseBtn">
+                    <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                    <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
+                </button>
+                <button id="muteBtn" class="sound-on">
+                    <svg class="mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" /></svg>
+                    <svg class="unmute-icon" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" /></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contentModal" class="content-modal">
+    <div class="modal-bg"></div>
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="content-wrapper">
+            <img id="contentImage" alt="" />
+            <div id="contentQuote" class="content-quote" aria-hidden="true"></div>
+        </div>
+        <div class="content-info">
+            <p class="content-name"></p>
+            <p class="content-title"></p>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    // Video Modal Elements
+    const videoModal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const videoModalClose = videoModal.querySelector('.modal-close');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const modalName = videoModal.querySelector('.modal-name');
+    const modalTitle = videoModal.querySelector('.modal-title');
+
+    // Content Modal Elements
+    const contentModal = document.getElementById('contentModal');
+    const contentImage = document.getElementById('contentImage');
+    const contentModalClose = contentModal.querySelector('.modal-close');
+    const contentName = contentModal.querySelector('.content-name');
+    const contentTitle = contentModal.querySelector('.content-title');
+    const contentInfo = contentModal.querySelector('.content-info');
+    const contentQuote = document.getElementById('contentQuote');
+
+    // Helper: parse simple color strings (rgb/rgba/#hex) to {r,g,b}
+    function parseColorToRGB(colorStr) {
+        if (!colorStr) return null;
+        colorStr = colorStr.replace(/\s+/g, '');
+        // rgb or rgba
+        const rgbMatch = colorStr.match(/rgba?\((\d{1,3}),(\d{1,3}),(\d{1,3})(?:,([\d.]+))?\)/i);
+        if (rgbMatch) {
+            return { r: parseInt(rgbMatch[1], 10), g: parseInt(rgbMatch[2], 10), b: parseInt(rgbMatch[3], 10) };
+        }
+        // hex #rrggbb or #rgb
+        const hexMatch = colorStr.match(/^#([a-f0-9]{3}|[a-f0-9]{6})$/i);
+        if (hexMatch) {
+            let hex = hexMatch[1];
+            if (hex.length === 3) {
+                hex = hex.split('').map(ch => ch + ch).join('');
+            }
+            return {
+                r: parseInt(hex.substring(0, 2), 16),
+                g: parseInt(hex.substring(2, 4), 16),
+                b: parseInt(hex.substring(4, 6), 16)
+            };
+        }
+        // fallback: not parsable
+        return null;
+    }
+
+    // Helper: is color dark? using luminance threshold
+    function isColorDark(colorStr) {
+        const rgb = parseColorToRGB(colorStr);
+        if (!rgb) return true; // default to dark for unknown values
+        // relative luminance approximation
+        const L = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
+        return L < 150; // threshold (0-255)
+    }
+    
+    // Function to open the content modal, triggered by the '+' button
+    window.openContentModalFromBlock = function(card) {
+        if (!card) return;
+        
+        // Remove active class from all cards, then add to the clicked one
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        const imgEl = card.querySelector('.card-image');
+        const name = card.querySelector('.name')?.textContent || '';
+        const title = card.querySelector('.title')?.textContent || '';
+        
+        // Find the quote from the card's local HTML
+        let quote = '';
+        const quoteEl = card.querySelector('.quote');
+        if (quoteEl) {
+            // Remove leading/trailing quotes for clean display in modal
+            quote = quoteEl.textContent.trim().replace(/^"|"$/g, '');
+        }
+
+        contentName.textContent = name;
+        contentTitle.textContent = title;
+
+        const contentWrapper = contentModal.querySelector('.content-wrapper');
+
+        // Reset all specific modal classes/styles
+        contentModal.classList.remove('has-image', 'quote-mode');
+        contentImage.style.display = 'none';
+        contentQuote.style.display = 'none'; // Reset display
+        contentWrapper.style.background = '';
+        contentInfo.style.color = '';
+        contentModalClose.style.color = '';
+        if (contentName) contentName.style.color = '';
+
+
+        if (imgEl && imgEl.src) {
+            // Case 1: Image Card
+            contentImage.src = imgEl.src;
+            contentImage.style.display = 'block';
+            contentModal.classList.add('has-image');
+            
+            // Text color is white over the image overlay
+            contentInfo.style.color = '#fff';
+            contentModalClose.style.color = '#fff';
+
+        } else if (quote) {
+            // Case 2: Quote-only Card (Text Card) - APPLYING FIX FOR NAME COLOR
+            contentImage.src = '';
+            contentQuote.textContent = quote;
+            contentQuote.style.display = 'block'; 
+            contentModal.classList.add('quote-mode');
+            
+            // Get card's computed background for the modal
+            const computed = window.getComputedStyle(card);
+            const bg = computed.backgroundColor || 'rgba(0,0,0,0.8)';
+            contentWrapper.style.background = bg;
+            
+            // Set text/close button color based on background brightness
+            const col = isColorDark(bg) ? '#fff' : '#000'; 
+            
+            // Apply dynamic color to all info text (title and quote)
+            contentInfo.style.color = col; 
+            contentQuote.style.color = col;
+            contentModalClose.style.color = col;
+
+            // 🎯 TASK 2 FIX: Ensure content-name is always #000 (black)
+            if (contentName) {
+                 contentName.style.color = '#000'; 
+            }
+
+        } else {
+            // Case 3: Simple Name/Title Card (Fallback)
+            const computed = window.getComputedStyle(card);
+            const bg = computed.backgroundColor || 'rgba(0,0,0,0.8) !important';
+            contentWrapper.style.background = bg;
+            
+            const col = isColorDark(bg) ? '#fff' : '#000';
+            contentInfo.style.color = col;
+            contentModalClose.style.color = col;
+        }
+        
+        contentModal.style.display = 'flex';
+    }
+
+
+    contentModalClose.onclick = function () {
+        closeContentModal();
+    }
+    
+    function closeContentModal() {
+        contentModal.style.display = 'none';
+        contentImage.src = '';
+        contentModal.classList.remove('has-image', 'quote-mode');
+        contentQuote.textContent = '';
+        contentQuote.style.display = 'none'; // Also reset on close
+        
+        // Reset styles
+        contentModal.querySelector('.content-wrapper').style.background = '';
+        contentModalClose.style.color = '';
+        
+        const info = contentModal.querySelector('.content-info');
+        if (info) info.style.color = '';
+        
+        // remove active class from card
+        document.querySelector('.card.active')?.classList.remove('active');
+    }
+
+
+    // Function to open the video modal
+    window.playVideo = function(playButton) {
+        const card = playButton.closest('.card');
+        if (!card) return;
+
+        // Add active class to the card that triggered the video
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        const videoSource = card.getAttribute('data-video');
+        const name = card.querySelector('.name').textContent;
+        const title = card.querySelector('.title').textContent;
+
+        if (videoSource) {
+            modalVideo.src = videoSource;
+            // modalVideo.load(); // Load isn't necessary with a good source, but good practice
+            
+            // Reset state
+            modalVideo.muted = false; // Start with sound on (default)
+            modalVideo.controls = false; // Use custom controls only
+            
+            // Update info
+            modalName.textContent = name;
+            modalTitle.textContent = title;
+
+            videoModal.style.display = 'flex';
+            modalVideo.play();
+            updatePlayPauseButton();
+            updateMuteButton();
+        }
+    }
+
+    function updatePlayPauseButton() {
+        playPauseBtn.classList.toggle('paused', modalVideo.paused);
+    }
+
+    function updateMuteButton() {
+        const soundOn = !modalVideo.muted;
+        muteBtn.classList.toggle('sound-on', soundOn);
+    }
+
+    playPauseBtn.onclick = function () {
+        if (modalVideo.paused) {
+            modalVideo.play();
+        } else {
+            modalVideo.pause();
+        }
+    }
+
+    muteBtn.onclick = function () {
+        modalVideo.muted = !modalVideo.muted;
+        updateMuteButton();
+    }
+
+    videoModalClose.onclick = function () {
+        closeVideoModal();
+    }
+    
+    function closeVideoModal() {
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+        videoModal.style.display = 'none';
+        document.querySelector('.card.active')?.classList.remove('active');
+    }
+
+    // Combined window click handler for modal background
+    window.onclick = function (event) {
+        if (event.target == videoModal) {
+            closeVideoModal();
+        }
+        if (event.target == contentModal) {
+            closeContentModal();
+        }
+    }
+
+    // Video error handling
+    modalVideo.addEventListener('error', function (e) {
+        console.error('Error loading video:', e);
+        // alert('Sorry, there was an error loading the video. Please try again later.'); // Not needed in production
+        closeVideoModal();
+    });
+    
+    // Initialise event listeners for video controls
+    modalVideo.addEventListener('play', updatePlayPauseButton);
+    modalVideo.addEventListener('pause', updatePlayPauseButton);
+    modalVideo.addEventListener('volumechange', updateMuteButton);
+    
+    // Add click handlers for the play button on card, which calls playVideo
+    document.querySelectorAll('.card-video').forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Only trigger if click is NOT on the add button
+            if (!e.target.closest('.add-button')) {
+                const playButton = card.querySelector('.play-button');
+                if (playButton) {
+                    window.playVideo(playButton);
+                }
+            }
+        });
+    });
+    
+</script>
+
+{% schema %}
+{
+    "name": "Custom Testimonials Grid",
+    "tag": "section",
+    "max_blocks": 12,
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "heading",
+            "default": "Our science defies everything you know about light therapy",
+            "label": "Heading"
+        },
+        {
+            "type": "text",
+            "id": "subheading_line_1",
+            "default": "There is nothing else like it.",
+            "label": "Sub-heading Line 1"
+        },
+        {
+            "type": "textarea",
+            "id": "subheading_line_2",
+            "default": "Take a look at our AMAZING testimonials. This product truly works. And hundreds, if not thousands, of people agree. This goes from all ages and walks of life...",
+            "label": "Sub-heading Line 2"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "testimonial_card",
+            "name": "Testimonial Card",
+            "settings": [
+                {
+                    "type": "paragraph",
+                    "content": "A card can be a Video, an Image/Text card, or a Quote-only card. For a Quote-only card, leave the Image field blank and fill in the Quote."
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "default": "Cristiano Ronaldo",
+                    "label": "Client Name"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "default": "Legend & Global Icon",
+                    "label": "Client Title/Role"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Background Image (Optional)"
+                },
+                {
+                    "type": "url",
+                    "id": "video_url",
+                    "label": "Video MP4 URL (Optional, overrides image)",
+                    "info": "Provide a direct MP4 file URL. If provided, a play button will appear."
+                },
+                {
+                    "type": "textarea",
+                    "id": "quote",
+                    "label": "Quote Text (Optional)",
+                    "info": "This text will show up in the modal and, if no image is provided, will be the main content of the card."
+                },
+                {
+                    "type": "color",
+                    "id": "custom_bg_color",
+                    "label": "Quote Card Background Color (Optional)",
+                    "info": "Applies mainly to Quote-only cards."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Custom Testimonials Grid",
+            "category": "Testimonials",
+            "blocks": [
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" },
+                { "type": "testimonial_card" }
+            ]
+        }
+    ]
+}
+{% endschema %}
