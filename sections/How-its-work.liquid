@@ -1,0 +1,237 @@
+{% comment %}
+  Shopify Section for "How it Works" - DNA Vibe style (with background video + icon upload).
+{% endcomment %}
+<div id="shopify-section-{{ section.id }}" class="shopify-section">
+  <style>
+    :root {
+      --color-primary: {{ section.settings.primary_color }};
+      --color-background-start: {{ section.settings.bg_color_start }};
+      --color-background-center: {{ section.settings.bg_color_center }};
+      --color-background-blend: {{ section.settings.bg_color_blend }};
+      --color-background-end: {{ section.settings.bg_color_end }};
+      --color-text-light: #F3F5F9;
+      --color-text-subtle: #D9D9D9;
+      --color-overlay-bg: rgba(17, 17, 17, 0.7);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    .how-it-works {
+      position: relative;
+      width: 100%;
+      padding: 90px 0;
+      background: linear-gradient(
+        to bottom right,
+        var(--color-background-start) 0%,
+        var(--color-background-center) 30%,
+        var(--color-background-blend) 70%,
+        var(--color-background-end) 100%
+      );
+      color: white;
+      overflow: hidden;
+    }
+    .how-it-works video.bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: {{ section.settings.bg_opacity }};
+      pointer-events: none;
+    }
+    .how-it-works::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('{{ section.settings.bg_image | image_url: width: 1500 }}') center/cover no-repeat;
+      opacity: {% if section.settings.bg_video == blank %}{{ section.settings.bg_opacity }}{% else %}0{% endif %};
+      z-index: 0;
+    }
+    .how-it-works .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0px;
+      position: relative;
+      z-index: 1;
+    }
+    .how-it-works .content-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    .how-it-works .left-content {
+      width: 53%;
+      background: var(--color-overlay-bg);
+      border-radius: 14px;
+      padding: 30px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .how-it-works .left-content h2 {
+      color: var(--color-text-light);
+      margin-bottom: 20px;
+    }
+    .how-it-works .left-content p {
+      font-size: 16px;
+      line-height: 28px;
+      color: var(--color-text-light);
+      margin-bottom: 16px;
+    }
+    .how-it-works .cta-button {
+      background-color: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 11px 30px;
+      font-size: 18px;
+      line-height: 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      box-shadow: 0px 1px 2px 0px var(--color-primary);
+      transition: opacity 0.2s;
+      width: fit-content;
+    }
+    .how-it-works .cta-button:hover { opacity: 0.9; }
+    .how-it-works .right-content {
+      width: 47%;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .how-it-works .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      border-radius: 12px;
+    }
+    .how-it-works .icon-wrapper {
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      border: 1px solid var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .how-it-works .fill { background-color: var(--color-primary); }
+    .how-it-works .benefit-content h3 {
+      color: white;
+      margin-bottom: 10px;
+    }
+    .how-it-works .benefit-content p {
+      color: var(--color-text-subtle);
+    }
+    .how-it-works .richtext-content {
+    width: 75% !important;
+}
+    @media (max-width: 766px) {
+      .how-it-works .content-wrapper { display: flex; flex-direction: column; gap: 30px; }
+      .how-it-works .left-content, .right-content { width: 100%; }
+      .how-it-works .richtext-content {width: 100% !important;}
+      .how-it-works {padding:60px 0px;}
+      .how-it-works .container{padding:0px 15px;}
+      .how-it-works .right-content{gap:20px;width:100%;}
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .how-it-works .content-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        padding: 0px 15px;
+    }
+    .how-it-works{padding: 50px 0;}
+    .how-it-works .right-content{gap: 28px;}
+    }
+    .toggle-container .main-toggle:nth-child(3) .togg-icon img {
+      width: 35px;
+      margin-top: -5px;
+    }
+  </style>
+  <section class="how-it-works">
+    {% if section.settings.bg_video != blank %}
+      <video class="bg-video" autoplay muted loop playsinline>
+        <source src="{{ section.settings.bg_video | video_url }}" type="video/mp4">
+      </video>
+    {% endif %}
+    <div class="container">
+      <div class="content-wrapper">
+        <div class="left-content">
+          <h2>{{ section.settings.heading }}</h2>
+          <div class="richtext-content">
+            {{ section.settings.content }}
+          </div>
+          {% if section.settings.button_label != blank %}
+            <a href="{{ section.settings.button_url }}" class="cta-button">{{ section.settings.button_label }}</a>
+          {% endif %}
+        </div>
+        <div class="right-content">
+          {% for block in section.blocks %}
+            {% assign is_filled = false %}
+            {% if block.settings.icon_style == 'filled' %}
+              {% assign is_filled = true %}
+            {% endif %}
+            <div class="benefit-item" {{ block.shopify_attributes }}>
+              <div class="icon-wrapper {% if is_filled %}fill{% endif %}">
+                {% if block.settings.icon_image != blank %}
+                  <img src="{{ block.settings.icon_image | image_url: width: 64 }}" alt="Icon" width="32" height="32">
+                {% elsif block.settings.icon_svg != blank %}
+                  {{ block.settings.icon_svg }}
+                {% else %}
+                  <svg class="wave-icon" width="27" height="11" viewBox="0 0 27 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.46667 9.46655C5.46667 9.46655 5.46667 1.46655 9.46668 1.46655C13.4667 1.46655 13.4667 9.46655 17.4667 9.46655C21.4667 9.46655 21.4667 1.46655 25.4667 1.46655" stroke="white" stroke-width="2.93333" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% endif %}
+              </div>
+              <div class="benefit-content">
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% schema %}
+{
+  "name": "How It Works - DNA Vibe",
+  "tag": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "color", "id": "bg_color_start", "label": "Gradient Start Color", "default": "#3C0D22" },
+    { "type": "color", "id": "bg_color_center", "label": "Gradient Center Color", "default": "#202123" },
+    { "type": "color", "id": "bg_color_blend", "label": "Gradient Blend Color", "default": "#2E1723" },
+    { "type": "color", "id": "bg_color_end", "label": "Gradient End Color", "default": "#3C0D22" },
+    { "type": "video", "id": "bg_video", "label": "Background Video (from library)" },
+    { "type": "image_picker", "id": "bg_image", "label": "Fallback Background Image" },
+    { "type": "range", "id": "bg_opacity", "label": "Background Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.3 },
+    { "type": "color", "id": "primary_color", "label": "Primary Accent Color", "default": "#EC0D87" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How it Works" },
+    { "type": "richtext", "id": "content", "label": "Content", "default": "<p>DNA Vibe's Jazz Band isn't just a collection of LEDs...</p>" },
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "See the technology in action" },
+    { "type": "url", "id": "button_url", "label": "Button Link" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Feature Benefit",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Instant Comfort (Immediate)" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain." },
+        { "type": "select", "id": "icon_style", "label": "Icon Style", "default": "outline", "options": [ { "value": "outline", "label": "Outline" }, { "value": "filled", "label": "Filled" } ] },
+        { "type": "image_picker", "id": "icon_image", "label": "Custom Icon Image (Optional)" },
+        { "type": "liquid", "id": "icon_svg", "label": "Custom Icon SVG (Optional)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "How It Works - DNA Vibe" }]
+}
+{% endschema %}
+
+
+
+
+
+
+
