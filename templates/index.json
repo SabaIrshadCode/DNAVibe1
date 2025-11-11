@@ -50,6 +50,50 @@
     },
     "how_its_work_m9XBDA": {
       "type": "How-its-work",
+      "blocks": {
+        "benefit_eHyPae": {
+          "type": "benefit",
+          "settings": {
+            "title": "Instant Comfort (Immediate)",
+            "text": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain.",
+            "icon_style": "outline",
+            "icon_svg": ""
+          }
+        },
+        "benefit_DY9Ah4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Instant Comfort (Immediate)",
+            "text": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain.",
+            "icon_style": "outline",
+            "icon_svg": ""
+          }
+        },
+        "benefit_zVDJYV": {
+          "type": "benefit",
+          "settings": {
+            "title": "Instant Comfort (Immediate)",
+            "text": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain.",
+            "icon_style": "outline",
+            "icon_svg": ""
+          }
+        },
+        "benefit_JzKfgF": {
+          "type": "benefit",
+          "settings": {
+            "title": "Instant Comfort (Immediate)",
+            "text": "Randomized micro-vibrations amplify nerve-gating effects to melt away pain.",
+            "icon_style": "outline",
+            "icon_svg": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_eHyPae",
+        "benefit_DY9Ah4",
+        "benefit_zVDJYV",
+        "benefit_JzKfgF"
+      ],
       "name": "How It Works - DNA Vibe",
       "settings": {
         "bg_color_start": "#3C0D22",
