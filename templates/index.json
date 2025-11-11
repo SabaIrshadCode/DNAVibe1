@@ -317,6 +317,37 @@
     },
     "faq_light_therapy_f4xVcw": {
       "type": "faq-light-therapy",
+      "blocks": {
+        "faq_item_8BC6nB": {
+          "type": "faq_item",
+          "settings": {
+            "left_icon": "shopify://shop_images/img4.jpg",
+            "plus_icon": "shopify://shop_images/img3.jpg",
+            "minus_icon": "shopify://shop_images/img2.jpg",
+            "title": "Example Title",
+            "text": "Your description goes here."
+          }
+        },
+        "faq_item_k7MzHH": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Example Title",
+            "text": "Your descriptifhdsghfgdfgdsghsdchgdcon goes here."
+          }
+        },
+        "faq_item_dRr3d3": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Example Titledshvchjcfhjvcahcjvhcvsd",
+            "text": "Your description ds,jbdasjkdasjcbajsgoes here."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_8BC6nB",
+        "faq_item_k7MzHH",
+        "faq_item_dRr3d3"
+      ],
       "name": "FAQ Section with Background Video Option",
       "settings": {
         "heading": "Light Years Beyond Light Therapy",
