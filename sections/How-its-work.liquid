@@ -148,12 +148,9 @@
     }
   </style>
   <section class="how-it-works">
-     {% assign video_url = section.settings.bg_video | default: 'https://cdn.shopify.com/videos/c/o/v/0caa33e33ca84713b797903780883f76.mp4' %}
-    {% if video_url != blank %}
-      <video class="bg-video" autoplay muted loop playsinline>
-        <source src="{{ video_url }}" type="video/mp4">
-      </video>
-    {% endif %}
+    {% if section.settings.bg_video != blank %}
+    {{ section.settings.bg_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'bg-video' }}
+  {% endif %}
     <div class="container">
       <div class="content-wrapper">
         <div class="left-content">
