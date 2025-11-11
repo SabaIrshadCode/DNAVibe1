@@ -15,43 +15,49 @@
       <p class="sub-heading">{{ section.settings.subheading | escape }}</p>
     </div>
 
-    <div class="card-container">
-      {% for block in section.blocks %}
-        <div class="card {% if block.settings.popular %}popular{% endif %}">
-          {% if block.settings.popular %}
-            <span class="badge">{{ block.settings.badge_text | escape }}</span>
-          {% endif %}
+    <!-- ✅ Slider Container -->
+    <div class="card-slider">
+      <button class="slider-btn prev">&#10094;</button>
 
-          {% if block.settings.image != blank %}
-            <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title | escape }}" class="card-img" />
-          {% endif %}
+      <div class="card-track">
+        {% for block in section.blocks %}
+          <div class="card {% if block.settings.popular %}popular{% endif %}">
+            {% if block.settings.popular %}
+              <span class="badge">{{ block.settings.badge_text | escape }}</span>
+            {% endif %}
 
-          <h3 class="card-title">{{ block.settings.title | escape }}</h3>
-          <p class="card-desc">{{ block.settings.description }}</p>
-          <div class="price">{{ block.settings.price | escape }}</div>
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title | escape }}" class="card-img" />
+            {% endif %}
 
-          {% if block.settings.button_url != blank %}
-            <a href="{{ block.settings.button_url }}" class="btn {% if block.settings.popular %}highlight{% endif %}">
-              {{ block.settings.button_text | escape }}
-            </a>
-          {% else %}
-            <div class="top-btn">
-              <span class="btn {% if block.settings.popular %}highlight{% endif %}">
+            <h3 class="card-title">{{ block.settings.title | escape }}</h3>
+            <p class="card-desc">{{ block.settings.description }}</p>
+            <div class="price">{{ block.settings.price | escape }}</div>
+
+            {% if block.settings.button_url != blank %}
+              <a href="{{ block.settings.button_url }}" class="btn {% if block.settings.popular %}highlight{% endif %}">
                 {{ block.settings.button_text | escape }}
-              </span>
-            </div>
-          {% endif %}
+              </a>
+            {% else %}
+              <div class="top-btn">
+                <span class="btn {% if block.settings.popular %}highlight{% endif %}">
+                  {{ block.settings.button_text | escape }}
+                </span>
+              </div>
+            {% endif %}
 
-          <ul class="feature-list">
-            {% if block.settings.feature_1 != blank %}<li>{{ block.settings.feature_1 | escape }}</li>{% endif %}
-            {% if block.settings.feature_2 != blank %}<li>{{ block.settings.feature_2 | escape }}</li>{% endif %}
-            {% if block.settings.feature_3 != blank %}<li>{{ block.settings.feature_3 | escape }}</li>{% endif %}
-            {% if block.settings.feature_4 != blank %}<li>{{ block.settings.feature_4 | escape }}</li>{% endif %}
-            {% if block.settings.feature_5 != blank %}<li>{{ block.settings.feature_5 | escape }}</li>{% endif %}
-            {% if block.settings.feature_6 != blank %}<li>{{ block.settings.feature_5 | escape }}</li>{% endif %}
-          </ul>
-        </div>
-      {% endfor %}
+            <ul class="feature-list">
+              {% if block.settings.feature_1 != blank %}<li>{{ block.settings.feature_1 | escape }}</li>{% endif %}
+              {% if block.settings.feature_2 != blank %}<li>{{ block.settings.feature_2 | escape }}</li>{% endif %}
+              {% if block.settings.feature_3 != blank %}<li>{{ block.settings.feature_3 | escape }}</li>{% endif %}
+              {% if block.settings.feature_4 != blank %}<li>{{ block.settings.feature_4 | escape }}</li>{% endif %}
+              {% if block.settings.feature_5 != blank %}<li>{{ block.settings.feature_5 | escape }}</li>{% endif %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="slider-btn next">&#10095;</button>
     </div>
 
     <div class="bottom-btn">
@@ -106,7 +112,7 @@
         { "type": "card" },
         { "type": "card", "settings": { "popular": true } },
         { "type": "card" },
-        { "type": "card" },
+        { "type": "card" }
       ]
     }
   ]
@@ -114,12 +120,12 @@
 {% endschema %}
 
 {% stylesheet %}
-.jazz-section { 
+.jazz-section {
   position: relative;
-  text-align: center; 
-  padding: 90px 0; 
-  display: flex; 
-  flex-direction: column; 
+  text-align: center;
+  padding: 90px 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   overflow: hidden;
 }
@@ -143,156 +149,109 @@
   align-items: center;
 }
 
-.jazz-section .main-heading { 
-  margin-bottom: 16px; 
-  color: #0E0F11; 
+.main-heading { color: #0E0F11; margin-bottom: 16px; }
+.sub-heading { color: #0A0A0A; font-size: 20px; line-height: 28px; margin-bottom: 60px; }
+
+/* ✅ Slider styling */
+.card-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 40px 0;
 }
 
-.jazz-section .sub-heading { 
-  font-size: 20px; 
-  line-height: 28px; 
-  font-weight: 400; 
-  color: #0A0A0A; 
-  margin-bottom: 60px; 
+.card-track {
+  display: flex;
+  transition: transform 0.6s ease;
+  gap: 30px;
 }
 
-.jazz-section .card-container { 
-  display: flex; 
-  justify-content: center; 
-  align-items: stretch; 
-  gap: 30px; 
-  flex-wrap: nowrap; 
+.card {
+  min-width: 360px;
+  flex-shrink: 0;
+  background-color: #111;
+  color: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  text-align: left;
+  transition: all 0.3s ease;
 }
 
-.jazz-section .card { 
-  background-color: #111; 
-  color: #fff; 
-  border-radius: 20px; 
-  width: 33%; 
-  padding: 30px; 
-  position: relative; 
-  overflow: visible; 
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
-  text-align: left; 
-  transition: all 0.3s ease; 
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
 
-.jazz-section .card.popular { 
-  border: 2px solid #ff007f; 
-  transform: scale(1.05); 
-  z-index: 2; 
-  box-shadow: 0px 25px 50px -12px rgba(233,52,190,0.33); 
+/* Nav buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 50%;
+  z-index: 3;
+  transition: 0.3s;
 }
 
-.jazz-section .badge { 
-  position: absolute; 
-  top: -16px; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  background-color: #ff007f; 
-  color: #fff; 
-  font-size: 12px; 
-  padding: 6px 12px; 
-  border-radius: 20px; 
-  font-weight: 600; 
-  z-index: 7;
+.slider-btn:hover { background: #ec0d87; }
+
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+
+.bottom-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
 }
 
-.jazz-section .card-img { 
-  width: 100%; 
-  height: 340px; 
-  border-radius: 12px; 
-  object-fit: cover; 
-  margin-bottom: 20px; 
+/* Responsive */
+@media (max-width: 1024px) {
+  .card { min-width: 320px; }
 }
-
-.jazz-section .card.popular .card-img { height: 370px; }
-
-.jazz-section .card-title { margin: 10px 0; }
-
-.jazz-section .card-desc { margin-bottom: 16px; color: #ccc; }
-
-.jazz-section .price { 
-  font-size: 36px; 
-  line-height: 40px; 
-  font-weight: 600; 
-  margin-bottom: 16px; 
-}
-
-.jazz-section .btn { 
-  background-color: #333; 
-  color: #fff; 
-  border: none; 
-  padding: 15px 24px; 
-  border-radius: 10px; 
-  font-size: 14px; 
-  line-height: 20px; 
-  font-weight: 500; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-  width: 100%; 
-  text-align: center; 
-  display: inline-block; 
-  text-decoration: none; 
-}
-
-.jazz-section .btn:hover { background-color: #555; }
-
-.jazz-section .btn.highlight { 
-  background: linear-gradient(90deg, #ec0d87 0%, #ec0d87 100%); 
-  color: white; 
-  box-shadow: 0px 1px 2px 0px #ec0d87; 
-}
-
-.jazz-section .btn.highlight:hover { 
-  background: linear-gradient(45deg, #d30975 0%, #ef0c8d 50%, #f155a6 100%); 
-  box-shadow: 0px 4px 10px rgba(236, 13, 135, 0.5); 
-}
-
-.jazz-section .feature-list { 
-  list-style: none; 
-  padding: 0; 
-  margin: 25px 0 0 0; 
-}
-
-.jazz-section .feature-list li { 
-  font-size: 14px; 
-  line-height: 20px; 
-  margin-bottom: 14px; 
-  position: relative; 
-  padding-left: 20px; 
-}
-
-.jazz-section .feature-list li::before { 
-  content: "✔"; 
-  color: #ff007f; 
-  position: absolute; 
-  left: 0; 
-  top: 0; 
-}
-
-.jazz-section .bottom-btn { 
-  display: flex; 
-  justify-content: center; 
-  margin-top: 90px; 
-}
-
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .jazz-section { padding: 50px 0; }
-  .jazz-section .card-container { flex-wrap: wrap; gap: 50px; padding: 0 20px; flex-direction: column; }
-  .jazz-section .card { width: 100%; margin: 0 auto; }
-  .jazz-section .card.popular { transform: scale(1.02); }
-  .jazz-section .sub-heading { margin-bottom: 50px; }
-}
-
-/* Mobile */
-@media (max-width: 766px) {
-  .jazz-section { width: 100%; padding: 40px 0; }
-  .jazz-section .sub-heading { font-size: 16px; line-height: 24px; padding: 0 10px; margin-bottom: 30px; }
-  .jazz-section .card-container { align-items: center; padding: 0 10px; flex-direction: column; }
-  .jazz-section .card { width: 100%; max-width: 100%; }
-  .jazz-section .bottom-btn { margin-top: 30px; }
-  .jazz-section .card.popular { transform: scale(1); }
+@media (max-width: 768px) {
+  .card { min-width: 280px; }
 }
 {% endstylesheet %}
+
+{% javascript %}
+document.addEventListener("DOMContentLoaded", function() {
+  const track = document.querySelector(".card-track");
+  const cards = document.querySelectorAll(".card");
+  const nextBtn = document.querySelector(".slider-btn.next");
+  const prevBtn = document.querySelector(".slider-btn.prev");
+
+  if (!track || !cards.length) return;
+
+  let index = 0;
+  const visibleCards = 3;
+  const cardWidth = cards[0].offsetWidth + 30; // width + gap
+
+  function updateSlide() {
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (index < cards.length - visibleCards) index++;
+    else index = 0;
+    updateSlide();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (index > 0) index--;
+    else index = cards.length - visibleCards;
+    updateSlide();
+  });
+
+  setInterval(() => {
+    if (index < cards.length - visibleCards) index++;
+    else index = 0;
+    updateSlide();
+  }, 3000);
+});
+{% endjavascript %}
