@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "faq_light_therapy_PNNTUW": {
+      "type": "faq-light-therapy",
+      "name": "FAQ Section with Background Video Option",
+      "settings": {
+        "heading": "Light Years Beyond Light Therapy",
+        "subheading": "Here is a look at how the Jazz Band will transform your life."
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -533,6 +541,7 @@
     }
   },
   "order": [
+    "faq_light_therapy_PNNTUW",
     "image_banner",
     "how_its_work_m9XBDA",
     "awards_section_btfzgm",
