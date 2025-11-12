@@ -109,12 +109,98 @@
         "bg_color_blend": "#2e1723",
         "bg_color_end": "#3c0d22",
         "bg_video": "shopify://files/videos/0caa33e33ca84713b797903780883f76.mp4",
-        "bg_opacity": 0.3,
+        "bg_opacity": 0.1,
         "primary_color": "#ec0d87",
         "heading": "How it Works",
         "content": "<p>Unlike conventional light pads, DNA Vibe’s Jazz Band isn’t just a<br/>collection of LEDs. It’s a patented breakthrough in wearable<br/>wellness that is optimized to fit all body parts.</p><p>At its core, Harmonic Vibration technology is designed to work in<br/>perfect harmony with your DNA. This natural harmony unlocks<br/>your body’s regenerative power, helping you feel better, recover<br/>faster, and move with less pain.</p>",
         "button_label": "See the technology in action",
         "button_url": ""
+      }
+    },
+    "jazz_collection_rtjY4i": {
+      "type": "jazz-collection",
+      "blocks": {
+        "card_LQ7Un6": {
+          "type": "card",
+          "settings": {
+            "title": "",
+            "description": "",
+            "price": "",
+            "button_text": "Shop Now",
+            "button_url": "",
+            "popular": false,
+            "badge_text": "Most Popular",
+            "feature_1": "",
+            "feature_2": "",
+            "feature_3": "",
+            "feature_4": "",
+            "feature_5": ""
+          }
+        },
+        "card_FEHcxc": {
+          "type": "card",
+          "settings": {
+            "title": "",
+            "description": "",
+            "price": "",
+            "button_text": "Shop Now",
+            "button_url": "",
+            "popular": true,
+            "badge_text": "Most Popular",
+            "feature_1": "",
+            "feature_2": "",
+            "feature_3": "",
+            "feature_4": "",
+            "feature_5": ""
+          }
+        },
+        "card_GpgMTp": {
+          "type": "card",
+          "settings": {
+            "title": "",
+            "description": "",
+            "price": "",
+            "button_text": "Shop Now",
+            "button_url": "",
+            "popular": false,
+            "badge_text": "Most Popular",
+            "feature_1": "",
+            "feature_2": "",
+            "feature_3": "",
+            "feature_4": "",
+            "feature_5": ""
+          }
+        },
+        "card_bQdWWn": {
+          "type": "card",
+          "settings": {
+            "title": "",
+            "description": "",
+            "price": "",
+            "button_text": "Shop Now",
+            "button_url": "",
+            "popular": false,
+            "badge_text": "Most Popular",
+            "feature_1": "",
+            "feature_2": "",
+            "feature_3": "",
+            "feature_4": "",
+            "feature_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_LQ7Un6",
+        "card_FEHcxc",
+        "card_GpgMTp",
+        "card_bQdWWn"
+      ],
+      "name": "Jazz Band Collection",
+      "settings": {
+        "heading": "Jazz Band Collection",
+        "subheading": "This is red light, reimagined. Choose the perfect device for your wellness journey.",
+        "bottom_button_text": "Shop All Models",
+        "bottom_button_url": ""
       }
     },
     "awards_section_btfzgm": {
@@ -541,6 +627,7 @@
     "faq_light_therapy_PNNTUW",
     "image_banner",
     "how_its_work_m9XBDA",
+    "jazz_collection_rtjY4i",
     "awards_section_btfzgm",
     "faq_light_therapy_aPDBPz",
     "recover_section_fdHYcm",
