@@ -116,6 +116,66 @@
         "subheading": "Here's why the future belongs to DNA Vibe."
       }
     },
+    "regenerative_light_therapy_qdMXjW": {
+      "type": "regenerative-light-therapy",
+      "blocks": {
+        "slide_iVDw9k": {
+          "type": "slide",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "slide_xkJcVw": {
+          "type": "slide",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "slide_HhDiTf": {
+          "type": "slide",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "feature_bf6Eme": {
+          "type": "feature",
+          "settings": {
+            "number": "1",
+            "title": "Smarter, Not Stronger",
+            "description": "Our technology delivers targeted light, magnetic, and microvibration frequencies..."
+          }
+        },
+        "feature_X6KXkk": {
+          "type": "feature",
+          "settings": {
+            "number": "2",
+            "title": "Four Therapies. One Comfortable Wearable.",
+            "description": "The Jazz Band combines red light, near-infrared, magnetic signaling..."
+          }
+        },
+        "feature_zzQ3gg": {
+          "type": "feature",
+          "settings": {
+            "number": "3",
+            "title": "Advanced, Safe, and American-Made",
+            "description": "Built with precision and safety in mind, our devices use low-intensity signals..."
+          }
+        }
+      },
+      "block_order": [
+        "slide_iVDw9k",
+        "slide_xkJcVw",
+        "slide_HhDiTf",
+        "feature_bf6Eme",
+        "feature_X6KXkk",
+        "feature_zzQ3gg"
+      ],
+      "name": "Regenerative Light",
+      "settings": {
+        "heading": "regenerative Light Therapy. regenerative Comparison.",
+        "subheading": "Here's why the future belongs to DNA Vibe."
+      }
+    },
     "how_its_work_m9XBDA": {
       "type": "How-its-work",
       "blocks": {
@@ -687,6 +747,7 @@
     "faq_light_therapy_PNNTUW",
     "image_banner",
     "beyond_light_therapy_D7VQDg",
+    "regenerative_light_therapy_qdMXjW",
     "how_its_work_m9XBDA",
     "jazz_collection_rtjY4i",
     "awards_section_btfzgm",
