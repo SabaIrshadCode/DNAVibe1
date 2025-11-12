@@ -657,34 +657,6 @@
         startAutoPlay();
       }
 
-      // EXACT FAQ ACCORDION FUNCTIONALITY
-      featureItems.forEach(mt => {
-        const header = mt.querySelector('.feature-header');
-        const item = mt.querySelector('.feature-inner');
-        
-        if (!header || !item) return;
-
-        header.addEventListener('click', () => {
-          featureItems.forEach(other => {
-            if (other !== mt) {
-              other.classList.remove('active');
-              other.querySelector('.feature-inner').classList.remove('active');
-            }
-          });
-
-          const isActive = item.classList.contains('active');
-          item.classList.toggle('active', !isActive);
-          mt.classList.toggle('active', !isActive);
-        });
-      });
-
-      // ✅ Make the first toggle active by default
-      if (featureItems.length > 0) {
-        featureItems[0].classList.add('active');
-        const firstItem = featureItems[0].querySelector('.feature-inner');
-        if (firstItem) firstItem.classList.add('active');
-      }
-
       // Initialize carousel
       if (total > 0) {
         updateSlides();
