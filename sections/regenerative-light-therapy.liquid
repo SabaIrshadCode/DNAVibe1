@@ -1,14 +1,14 @@
-<section class="beyond-light-therapy" style="position:relative;">
+<section class="regenerative-light-therapy" style="position:relative;">
 
   <style>
 
-    .beyond-light-therapy * {
+    .regenerative-light-therapy * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    .beyond-light-therapy {
+    .regenerative-light-therapy {
       font-family: Geist, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       background: white;
       min-height: 850px;
@@ -18,7 +18,7 @@
       isolation: isolate;
     }
 
-    .beyond-light-therapy .main {
+    .regenerative-light-therapy .main {
       display: flex;
       align-items: center;
       max-width: 1245px;
@@ -29,7 +29,7 @@
       position: relative;
     }
 
-    .beyond-light-therapy .main-bg::before {
+    .regenerative-light-therapy .main-bg::before {
       content: "";
       position: absolute;
       top: 0;
@@ -49,7 +49,7 @@
     }
 
     /* Carousel styling */
-    .beyond-light-therapy .carousel-container {
+    .regenerative-light-therapy .carousel-container {
       width: 511px;
       margin: auto;
       perspective: 1000px;
@@ -57,7 +57,7 @@
       position: relative;
     }
 
-    .beyond-light-therapy .carousel-track {
+    .regenerative-light-therapy .carousel-track {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -65,13 +65,13 @@
       position: relative;
     }
 
-    .beyond-light-therapy .carousel-slide {
+    .regenerative-light-therapy .carousel-slide {
       position: absolute;
       transition: all 1.8s var(--ease-smooth);
       will-change: transform, opacity;
     }
 
-    .beyond-light-therapy .carousel-slide img {
+    .regenerative-light-therapy .carousel-slide img {
       width: 362px;
       height: 497px;
       border-radius: 10px;
@@ -80,26 +80,26 @@
     }
 
     /* Positioning for visible slides */
-    .beyond-light-therapy .carousel-slide.left {
+    .regenerative-light-therapy .carousel-slide.left {
       transform: translateX(-110px) scale(0.8);
       z-index: 1;
       opacity: 0.7;
     }
 
-    .beyond-light-therapy .carousel-slide.center {
+    .regenerative-light-therapy .carousel-slide.center {
       transform: translateX(0px) scale(1);
       z-index: 3;
       opacity: 1;
     }
 
-    .beyond-light-therapy .carousel-slide.right {
+    .regenerative-light-therapy .carousel-slide.right {
       transform: translateX(110px) scale(0.8);
       z-index: 1;
       opacity: 0.7;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
     }
 
-    .beyond-light-therapy .arrows {
+    .regenerative-light-therapy .arrows {
       width: 100%;
       margin: auto;
       display: flex;
@@ -112,7 +112,7 @@
       z-index: 10;
     }
 
-    .beyond-light-therapy .carousel-arrow {
+    .regenerative-light-therapy .carousel-arrow {
       font-size: 1.5rem;
       font-weight: 600;
       color: white;
@@ -125,12 +125,12 @@
       will-change: opacity, transform;
     }
 
-    .beyond-light-therapy .carousel-arrow:hover {
+    .regenerative-light-therapy .carousel-arrow:hover {
       opacity: 0.8;
       transform: scale(1.1);
     }
 
-    .beyond-light-therapy .carousel-backdrop {
+    .regenerative-light-therapy .carousel-backdrop {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -156,16 +156,16 @@
     }
 
     /* Content Styles */
-    .beyond-light-therapy .content-container {
+    .regenerative-light-therapy .content-container {
       padding: 0;
       width: 661px;
     }
 
-    .beyond-light-therapy .content-header {
+    .regenerative-light-therapy .content-header {
       margin-bottom: 25px;
     }
 
-    .beyond-light-therapy .main-title {
+    .regenerative-light-therapy .main-title {
       font-size: 60px;
       font-weight: 700;
       line-height: 66px;
@@ -175,7 +175,7 @@
       animation: fadeInUp 0.8s var(--ease-out-smooth) forwards;
     }
 
-    .beyond-light-therapy .subtitle {
+    .regenerative-light-therapy .subtitle {
       font-size: 20px;
       line-height: 45px;
       font-weight: 500;
@@ -184,14 +184,14 @@
       animation: fadeInUp 0.8s var(--ease-out-smooth) 0.1s forwards;
     }
 
-    .beyond-light-therapy .features-list {
+    .regenerative-light-therapy .features-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
     /* Accordion Feature Item Styles - EXACT same as FAQ main-toggle */
-    .beyond-light-therapy .feature-item {
+    .regenerative-light-therapy .feature-item {
       display: flex;
       align-items: stretch;
       border: 1px solid rgba(255,105,180,0.4);
@@ -206,7 +206,7 @@
     }
 
     /* Hover effects - Same as FAQ */
-    .beyond-light-therapy .feature-item:hover {
+    .regenerative-light-therapy .feature-item:hover {
       border-color: rgba(236, 13, 135, 0.8);
       box-shadow: 0 0 30px rgba(255,43,106,0.6);
       transform: translateY(-2px);
@@ -214,7 +214,7 @@
 
 
     /* EXACT FAQ STRUCTURE - togg-icon */
-    .beyond-light-therapy .feature-number {
+    .regenerative-light-therapy .feature-number {
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -231,26 +231,26 @@
       font-weight: 700;
     }
 
-    .beyond-light-therapy .feature-item.active .feature-number {
+    .regenerative-light-therapy .feature-item.active .feature-number {
       border-color: #FF2B6A;
     }
 
-    .beyond-light-therapy .feature-item:hover .feature-number {
+    .regenerative-light-therapy .feature-item:hover .feature-number {
       border-color: #ec0d87;
     }
 
     /* EXACT FAQ STRUCTURE - tog-con */
-    .beyond-light-therapy .feature-content {
+    .regenerative-light-therapy .feature-content {
       width: 87%;
     }
 
     /* EXACT FAQ STRUCTURE - toggle-item */
-    .beyond-light-therapy .feature-inner {
+    .regenerative-light-therapy .feature-inner {
       position: relative;
     }
 
     /* EXACT FAQ STRUCTURE - toggle-header */
-    .beyond-light-therapy .feature-header {
+    .regenerative-light-therapy .feature-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -260,12 +260,12 @@
     }
 
     /* EXACT FAQ STRUCTURE - toggle-left */
-    .beyond-light-therapy .feature-left {
+    .regenerative-light-therapy .feature-left {
       /* Wrapper for title alignment */
     }
 
     /* EXACT FAQ STRUCTURE - toggle-title */
-    .beyond-light-therapy .feature-title {
+    .regenerative-light-therapy .feature-title {
       color: #fff;
       transition: color 0.3s var(--ease-smooth);
       font-size: 16px;
@@ -274,31 +274,31 @@
     }
 
     /* EXACT FAQ STRUCTURE - toggle-content */
-    .beyond-light-therapy .feature-description {
+    .regenerative-light-therapy .feature-description {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.6s var(--ease-smooth), padding 0.6s var(--ease-smooth);
       will-change: max-height;
     }
 
-    .beyond-light-therapy .feature-inner.active .feature-description {
+    .regenerative-light-therapy .feature-inner.active .feature-description {
       max-height: 5000px;
       padding: 0 30px 25px;
     }
 
-    .beyond-light-therapy .feature-description p {
+    .regenerative-light-therapy .feature-description p {
       color: #C1C1C1;
       opacity: 0;
       transition: opacity 0.4s var(--ease-smooth) 0.2s;
       font-size: 17px !important;
     }
 
-    .beyond-light-therapy .feature-inner.active .feature-description p {
+    .regenerative-light-therapy .feature-inner.active .feature-description p {
       opacity: 1;
     }
 
     /* Entrance animations - EXACT from FAQ */
-    .beyond-light-therapy .fade-in-up {
+    .regenerative-light-therapy .fade-in-up {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.8s var(--ease-out-smooth) forwards;
@@ -322,69 +322,69 @@
         scroll-behavior: auto !important;
       }
 
-      .beyond-light-therapy .fade-in-up {
+      .regenerative-light-therapy .fade-in-up {
         opacity: 1;
         transform: none;
         animation: none;
       }
 
-      .beyond-light-therapy .main-title,
-      .beyond-light-therapy .subtitle,
-      .beyond-light-therapy .feature-item {
+      .regenerative-light-therapy .main-title,
+      .regenerative-light-therapy .subtitle,
+      .regenerative-light-therapy .feature-item {
         opacity: 1;
         transform: none;
         animation: none;
       }
 
-      .beyond-light-therapy .carousel-backdrop {
+      .regenerative-light-therapy .carousel-backdrop {
         animation: none;
       }
     }
 
     /* Tablet Styles */
     @media (max-width: 1024px) {
-      .beyond-light-therapy .main {
+      .regenerative-light-therapy .main {
         flex-direction: column;
         gap: 30px;
         padding-top: 50px;
         padding-bottom: 50px;
       }
 
-      .beyond-light-therapy .carousel-container {
+      .regenerative-light-therapy .carousel-container {
         width: 40%;
       }
 
-      .beyond-light-therapy .carousel-slide img {
+      .regenerative-light-therapy .carousel-slide img {
         width: 400px;
         max-width: 300px;
         height: 397px;
       }
 
-      .beyond-light-therapy .carousel-slide.left {
+      .regenerative-light-therapy .carousel-slide.left {
         transform: translateX(-80px) scale(0.8);
       }
 
-      .beyond-light-therapy .carousel-slide.right {
+      .regenerative-light-therapy .carousel-slide.right {
         transform: translateX(80px) scale(0.8);
       }
 
-      .beyond-light-therapy .main-title {
+      .regenerative-light-therapy .main-title {
         font-size: clamp(2rem, 4vw, 3rem);
       }
 
-      .beyond-light-therapy .content-container {
+      .regenerative-light-therapy .content-container {
         width: 100%;
         text-align: center;
       }
 
-      .beyond-light-therapy .feature-item {
+      .regenerative-light-therapy .feature-item {
         flex-direction: column;
         text-align: center;
         padding: 10px 20px;
         gap: 10px;
       }
 
-      .beyond-light-therapy .feature-number {
+      .regenerative-light-therapy .feature-number {
         width: 60px;
         height: 60px;
         font-size: 1.25rem;
@@ -392,25 +392,25 @@
         border-radius: 50%;
       }
 
-      .beyond-light-therapy .feature-header {
+      .regenerative-light-therapy .feature-header {
         height: 60px;
         padding: 0 20px;
       }
 
-      .beyond-light-therapy .feature-inner.active .feature-description {
+      .regenerative-light-therapy .feature-inner.active .feature-description {
         padding: 0 20px 25px;
       }
     }
 
     /* Mobile Styles */
     @media (max-width: 768px) {
-      .beyond-light-therapy .main {
+      .regenerative-light-therapy .main {
         flex-direction: column;
         padding: 40px 10px;
         z-index: 1;
       }
 
-      .beyond-light-therapy .carousel-container {
+      .regenerative-light-therapy .carousel-container {
         order: 2;
         z-index: 2;
         margin-top: 200px;
@@ -421,26 +421,26 @@
         height: 500px;
       }
 
-      .beyond-light-therapy .content-container {
+      .regenerative-light-therapy .content-container {
         order: 1;
         width: 100%;
         z-index: 1;
         text-align: center;
       }
 
-      .beyond-light-therapy .main-title {
+      .regenerative-light-therapy .main-title {
         font-size: clamp(1.8rem, 6vw, 2.5rem);
         line-height: 2.7rem;
       }
 
-      .beyond-light-therapy .feature-item {
+      .regenerative-light-therapy .feature-item {
         flex-direction: column;
         text-align: center;
         padding: 10px 20px;
         gap: 10px;
       }
 
-      .beyond-light-therapy .feature-number {
+      .regenerative-light-therapy .feature-number {
         width: 60px;
         height: 60px;
         font-size: 1.25rem;
@@ -448,30 +448,30 @@
         border-radius: 50%;
       }
 
-      .beyond-light-therapy .feature-header {
+      .regenerative-light-therapy .feature-header {
         height: 60px;
         padding: 0 20px;
       }
 
-      .beyond-light-therapy .feature-inner.active .feature-description {
+      .regenerative-light-therapy .feature-inner.active .feature-description {
         padding: 0 20px 25px;
       }
 
-      .beyond-light-therapy .carousel-backdrop {
+      .regenerative-light-therapy .carousel-backdrop {
         filter: blur(80px);
         opacity: 0.5;
       }
 
-      .beyond-light-therapy .carousel-arrow {
+      .regenerative-light-therapy .carousel-arrow {
         font-size: 1.8rem;
         opacity: 0.6;
       }
 
-      .beyond-light-therapy .carousel-slide.left {
+      .regenerative-light-therapy .carousel-slide.left {
         transform: translateX(-30%) scale(0.8);
       }
 
-      .beyond-light-therapy .carousel-slide.right {
+      .regenerative-light-therapy .carousel-slide.right {
         transform: translateX(30%) scale(0.8);
       }
     }
@@ -485,7 +485,7 @@
 
     /* Tablet */
     @media (min-width: 768px) and (max-width: 1024px) {
-      .beyond-light-therapy .arrows {
+      .regenerative-light-therapy .arrows {
         width: 135%;
         top: 0;
         left: 50%;
@@ -496,17 +496,17 @@
         font-size: 36px !important;
       }
 
-      .beyond-light-therapy .features-list {
+      .regenerative-light-therapy .features-list {
         display: flex;
         flex-direction: row;
         gap: 15px;
       }
 
-      .beyond-light-therapy .feature-item {
+      .regenerative-light-therapy .feature-item {
         width: 33.33%;
       }
 
-      .beyond-light-therapy .subtitle {
+      .regenerative-light-therapy .subtitle {
         font-size: 18px;
         line-height: 20px;
         font-weight: 500;
@@ -515,7 +515,7 @@
 
     /* Mobile */
     @media (max-width: 766px) {
-      .beyond-light-therapy .arrows {
+      .regenerative-light-therapy .arrows {
         width: 235%;
         top: 0;
         left: 50%;
@@ -527,15 +527,15 @@
         line-height: 36px !Important;
       }
 
-      .beyond-light-therapy .carousel-slide.left {
+      .regenerative-light-therapy .carousel-slide.left {
         transform: translateX(-23%) scale(0.8);
       }
 
-      .beyond-light-therapy .carousel-slide.right {
+      .regenerative-light-therapy .carousel-slide.right {
         transform: translateX(23%) scale(0.8);
       }
 
-      .beyond-light-therapy .subtitle {
+      .regenerative-light-therapy .subtitle {
         font-size: 18px;
         line-height: 20px;
       }
@@ -734,7 +734,7 @@
         "type": "text",
         "id": "heading",
         "label": "Main Heading",
-        "default": "Beyond Light Therapy. Beyond Comparison."
+        "default": "regenerative Light Therapy. regenerative Comparison."
       },
       {
         "type": "text",

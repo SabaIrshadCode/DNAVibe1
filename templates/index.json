@@ -56,6 +56,66 @@
         "show_text_below": false
       }
     },
+    "beyond_light_therapy_D7VQDg": {
+      "type": "beyond-light-therapy",
+      "blocks": {
+        "slide_8CcXeb": {
+          "type": "slide",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "slide_fm8fVA": {
+          "type": "slide",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "slide_GKe6wc": {
+          "type": "slide",
+          "settings": {
+            "alt_text": ""
+          }
+        },
+        "feature_99AGfR": {
+          "type": "feature",
+          "settings": {
+            "number": "1",
+            "title": "Smarter, Not Stronger",
+            "description": "Our technology delivers targeted light, magnetic, and microvibration frequencies..."
+          }
+        },
+        "feature_CUqAnz": {
+          "type": "feature",
+          "settings": {
+            "number": "2",
+            "title": "Four Therapies. One Comfortable Wearable.",
+            "description": "The Jazz Band combines red light, near-infrared, magnetic signaling..."
+          }
+        },
+        "feature_aCfdQR": {
+          "type": "feature",
+          "settings": {
+            "number": "3",
+            "title": "Advanced, Safe, and American-Made",
+            "description": "Built with precision and safety in mind, our devices use low-intensity signals..."
+          }
+        }
+      },
+      "block_order": [
+        "slide_8CcXeb",
+        "slide_fm8fVA",
+        "slide_GKe6wc",
+        "feature_99AGfR",
+        "feature_CUqAnz",
+        "feature_aCfdQR"
+      ],
+      "name": "Beyond Light Therapy",
+      "settings": {
+        "heading": "Beyond Light Therapy. Beyond Comparison.",
+        "subheading": "Here's why the future belongs to DNA Vibe."
+      }
+    },
     "how_its_work_m9XBDA": {
       "type": "How-its-work",
       "blocks": {
@@ -626,6 +686,7 @@
   "order": [
     "faq_light_therapy_PNNTUW",
     "image_banner",
+    "beyond_light_therapy_D7VQDg",
     "how_its_work_m9XBDA",
     "jazz_collection_rtjY4i",
     "awards_section_btfzgm",
