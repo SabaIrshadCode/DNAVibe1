@@ -1,0 +1,516 @@
+<section class="awards-section">
+  <div class="container-wrapper">
+    <div class="content-container">
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+      <p class="section-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+    <div class="awards-slider" data-section-id="{{ section.id }}">
+      <button class="awards-nav awards-prev" type="button" aria-label="Previous awards">&#10094;</button>
+      <div class="awards-viewport">
+        <div class="awards-track">
+          {% for block in section.blocks %}
+            <div class="award-card">
+              {% if block.settings.image != blank %}
+                <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+              {% endif %}
+              <div class="award-info">
+                <h3>{{ block.settings.title }}</h3>
+                <p class="tag">{{ block.settings.tag }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <button class="awards-nav awards-next" type="button" aria-label="Next awards">&#10095;</button>
+    </div>
+  </div>
+  <style>
+    /* Your same CSS copied here (optional: move to theme.css if preferred) */
+    *{
+        margin:0;
+        padding:0;
+    }
+    .awards-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 0px;
+      background: radial-gradient(
+        ellipse at center 65%,
+        #db2777 -80%,
+        #fff3f8 55%,
+        #ffffff 70%
+      );
+    }
+    .container-wrapper {
+      width: 1440px;
+      display: flex;
+      gap: 50px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap:16px;
+    }
+    .section-title {
+      font-size: 48px;
+      line-height: 48px;
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      color: #0e0f11;
+      margin-bottom: 0px !important;
+      text-align: center;
+    }
+    .section-subtitle {
+      font-family: Geist, sans-serif;
+      color: #0a0a0a;
+      font-size: 20px;
+      line-height: 28px;
+      text-align: center;
+      font-weight: 400;
+    }
+    .awards-slider {
+      width: 100%;
+      position: relative;
+      max-width:1440px;
+      margin:0 auto;
+    }
+    .awards-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+    .awards-track {
+      display: flex;
+      gap: 24px;
+      will-change: transform;
+      transition: transform 400ms ease;
+    }
+    .awards-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: #ec0d8791;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 200ms ease, opacity 200ms ease;
+    }
+    .awards-nav:hover {
+      background: rgba(0,0,0,0.65);
+    }
+    .awards-prev { left: -12px; }
+    .awards-next { right: -12px; }
+    /* Default desktop: 4 per view */
+    .awards-track .award-card {
+      flex: 0 0 calc((100% - 72px) / 4);
+    }
+    .award-card {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 0.8px;
+      box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.3);
+    }
+    .award-card img {
+      width: 100%;
+      display: block;
+      height: 100%;
+      object-fit: cover;
+    }
+    .award-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 50%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+    }
+    .award-info {
+      position: absolute;
+      bottom: 8%;
+      left: 10%;
+      color: #fff;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 13.6px;
+      z-index: 2;
+    }
+    .award-info h3 {
+      font-family: Inter, sans-serif;
+      color:white;
+    }
+    .award-info .tag {
+      color: #E31C79;
+      font-size: 12px;
+      line-height: 16px;
+      font-family: Inter, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    @media (max-width: 1024px) {
+      .awards-section {
+        padding: 50px 15px;
+      }
+      .container-wrapper {
+        gap: 40px;
+      }
+      .awards-track {
+        gap: 20px;
+      }
+      .awards-track .award-card {
+        flex: 0 0 calc((100% - 40px) / 3);
+      }
+      .award-card {
+        min-width: auto;
+      }
+    }
+    @media (max-width: 768px) {
+      .awards-section {
+        padding: 40px 10px;
+      }
+      .section-title {
+        font-size: 32px;
+        line-height: 36px;
+        margin-bottom: 10px;
+      }
+      .container-wrapper {
+        gap: 30px;
+      }
+      .content-container{
+        gap:10px;
+      }
+      .awards-track {
+        gap: 10px;
+      }
+      .awards-track .award-card {
+        flex: 0 0 calc((100% - 10px) / 2);
+      }
+      .award-card {
+        height: 250px;
+        min-width:auto;
+      }
+      .award-info {
+        bottom: 15px;
+        left: 15px;
+        gap: 10px;
+        padding-right: 5px;
+      }
+
+      .award-info h3{
+        font-size: 20px;
+      }
+    }
+  </style>
+  <script>
+    (function() {
+      var sectionId = "{{ section.id }}";
+      var slider = document.querySelector('.awards-slider[data-section-id="'+ sectionId +'"]');
+      if (!slider) return;
+      var viewport = slider.querySelector('.awards-viewport');
+      var track = slider.querySelector('.awards-track');
+      var prevBtn = slider.querySelector('.awards-prev');
+      var nextBtn = slider.querySelector('.awards-next');
+      var gapPx = parseFloat(getComputedStyle(track).gap) || 24;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var autoplayInterval = 3500; // ms
+      var autoplayId = null;
+
+      function getPerView() {
+        var w = window.innerWidth;
+        if (w <= 768) return 2;     // Mobile: 2
+        if (w <= 1024) return 3;    // Tablet: 3
+        return 4;                   // Desktop: 4
+      }
+
+      var slides = Array.prototype.slice.call(track.children);
+      var perView = getPerView();
+      var index = 0;
+      var isTransitioning = false;
+      var clonesHead = [];
+      var clonesTail = [];
+
+      function setupClones() {
+        cleanupClones();
+        perView = getPerView();
+        if (slides.length === 0) return;
+        var first = slides.slice(0, perView);
+        var last = slides.slice(-perView);
+        first.forEach(function(el) {
+          var c = el.cloneNode(true);
+          c.setAttribute('aria-hidden', 'true');
+          track.appendChild(c);
+          clonesTail.push(c);
+        });
+        last.forEach(function(el) {
+          var c = el.cloneNode(true);
+          c.setAttribute('aria-hidden', 'true');
+          track.insertBefore(c, track.firstChild);
+          clonesHead.push(c);
+        });
+        index = perView;
+        setPosition(true);
+      }
+
+      function cleanupClones() {
+        clonesHead.forEach(function(c){ if (c.parentNode) c.parentNode.removeChild(c); });
+        clonesTail.forEach(function(c){ if (c.parentNode) c.parentNode.removeChild(c); });
+        clonesHead = [];
+        clonesTail = [];
+        slides = Array.prototype.slice.call(track.querySelectorAll('.award-card')).filter(function(n){ return !n.hasAttribute('aria-hidden'); });
+      }
+
+      function slideWidth() {
+        var vpWidth = viewport.clientWidth;
+        return (vpWidth - gapPx * (perView - 1)) / perView;
+      }
+
+      function setPosition(skipTransition) {
+        if (skipTransition) {
+          track.style.transition = 'none';
+        } else {
+          track.style.transition = 'transform 400ms ease';
+        }
+        var offset = -index * (slideWidth() + gapPx);
+        track.style.transform = 'translateX(' + offset + 'px)';
+        if (skipTransition) {
+          track.offsetHeight;
+          track.style.transition = 'transform 400ms ease';
+        }
+      }
+
+      function next() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        index += 1;
+        setPosition(false);
+      }
+      function prev() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        index -= 1;
+        setPosition(false);
+      }
+
+      track.addEventListener('transitionend', function() {
+        var total = slides.length;
+        if (index > perView + total - 1) index = perView;
+        if (index < 1) index = perView + total - 1;
+        if (index === perView - 1 || index === perView + total) {
+          setPosition(true);
+        }
+        isTransitioning = false;
+      });
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      function stopAutoplay() {
+        if (autoplayId) {
+          clearInterval(autoplayId);
+          autoplayId = null;
+        }
+      }
+      function startAutoplay() {
+        if (reduceMotion) return;
+        stopAutoplay();
+        autoplayId = setInterval(function() {
+          next();
+        }, autoplayInterval);
+      }
+      function restartAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      // Touch/drag support
+      var startX = 0;
+      var currentX = 0;
+      var isDragging = false;
+      var dragThreshold = 40;
+
+      function onStart(e) {
+        isDragging = true;
+        startX = (e.touches ? e.touches[0].clientX : e.clientX);
+        currentX = startX;
+        track.style.transition = 'none';
+      }
+      function onMove(e) {
+        if (!isDragging) return;
+        currentX = (e.touches ? e.touches[0].clientX : e.clientX);
+        var delta = currentX - startX;
+        var offset = -index * (slideWidth() + gapPx) + delta;
+        track.style.transform = 'translateX(' + offset + 'px)';
+      }
+      function onEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        var delta = currentX - startX;
+        track.style.transition = 'transform 400ms ease';
+        if (Math.abs(delta) > dragThreshold) {
+          if (delta < 0) {
+            next();
+          } else {
+            prev();
+          }
+        } else {
+          setPosition(false);
+        }
+      }
+
+      viewport.addEventListener('touchstart', function(e) {
+        stopAutoplay();
+        onStart(e);
+      }, { passive: true });
+      window.addEventListener('touchmove', onMove, { passive: true });
+      window.addEventListener('touchend', function() {
+        onEnd();
+        startAutoplay();
+      }, { passive: true });
+      viewport.addEventListener('mousedown', function(e) {
+        stopAutoplay();
+        onStart(e);
+      });
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', function() {
+        onEnd();
+        startAutoplay();
+      });
+
+      // Pause on focus; resume on blur (do not pause on hover)
+      slider.addEventListener('focusin', stopAutoplay);
+      slider.addEventListener('focusout', startAutoplay);
+
+      // Pause when tab is hidden
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      });
+
+      // Resize handling
+      var resizeTimeout;
+      function onResize() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+          var oldPerView = perView;
+          perView = getPerView();
+          if (perView !== oldPerView) {
+            setupClones();
+          } else {
+            setPosition(true);
+          }
+          gapPx = parseFloat(getComputedStyle(track).gap) || gapPx;
+        }, 100);
+      }
+      window.addEventListener('resize', onResize);
+
+      // Init
+      setupClones();
+      setPosition(true);
+      // Autoplay
+      startAutoplay();
+    })();
+  </script>
+ {% schema %}
+{
+  "name": "Awards Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Awards Speak About Us More Than Us"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section Subheading",
+      "default": "Recognized by the leaders, for the leaders."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "award",
+      "name": "Award Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Award Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Award Title",
+          "default": "Award Title Here"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Award Tag",
+          "default": "Award Winner"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Awards Section",
+      "category": "Custom Sections",
+      "blocks": [
+        {
+          "type": "award",
+          "settings": {
+            "title": "USA Today Best Gift",
+            "tag": "Award Winner"
+          }
+        },
+        {
+          "type": "award",
+          "settings": {
+            "title": "WebMD Best Product",
+            "tag": "Award Winner"
+          }
+        },
+        {
+          "type": "award",
+          "settings": {
+            "title": "Coolest Thing Made in Colorado",
+            "tag": "Award Winner"
+          }
+        },
+        {
+          "type": "award",
+          "settings": {
+            "title": "Health 2.0 Outstanding Leadership",
+            "tag": "Award Winner"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+</section>

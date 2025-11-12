@@ -1,0 +1,298 @@
+{% comment %}
+  jazz-band-collection.liquid
+  Shopify Section: Jazz Band Collection
+  All content editable via Theme Customizer
+{% endcomment %}
+
+<section class="jazz-section">
+  {% if section.settings.bg_image != blank %}
+    <div class="bg-overlay" style="background-image: url({{ section.settings.bg_image | img_url: 'master' }});"></div>
+  {% endif %}
+
+  <div class="content-wrapper">
+    <div class="main-sub-text">
+      <h2 class="main-heading">{{ section.settings.heading | escape }}</h2>
+      <p class="sub-heading">{{ section.settings.subheading | escape }}</p>
+    </div>
+
+    <div class="card-container">
+      {% for block in section.blocks %}
+        <div class="card {% if block.settings.popular %}popular{% endif %}">
+          {% if block.settings.popular %}
+            <span class="badge">{{ block.settings.badge_text | escape }}</span>
+          {% endif %}
+
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title | escape }}" class="card-img" />
+          {% endif %}
+
+          <h3 class="card-title">{{ block.settings.title | escape }}</h3>
+          <p class="card-desc">{{ block.settings.description }}</p>
+          <div class="price">{{ block.settings.price | escape }}</div>
+
+          {% if block.settings.button_url != blank %}
+            <a href="{{ block.settings.button_url }}" class="btn {% if block.settings.popular %}highlight{% endif %}">
+              {{ block.settings.button_text | escape }}
+            </a>
+          {% else %}
+            <div class="top-btn">
+              <span class="btn {% if block.settings.popular %}highlight{% endif %}">
+                {{ block.settings.button_text | escape }}
+              </span>
+            </div>
+          {% endif %}
+
+          <ul class="feature-list">
+            {% if block.settings.feature_1 != blank %}<li>{{ block.settings.feature_1 | escape }}</li>{% endif %}
+            {% if block.settings.feature_2 != blank %}<li>{{ block.settings.feature_2 | escape }}</li>{% endif %}
+            {% if block.settings.feature_3 != blank %}<li>{{ block.settings.feature_3 | escape }}</li>{% endif %}
+            {% if block.settings.feature_4 != blank %}<li>{{ block.settings.feature_4 | escape }}</li>{% endif %}
+            {% if block.settings.feature_5 != blank %}<li>{{ block.settings.feature_5 | escape }}</li>{% endif %}
+            {% if block.settings.feature_6 != blank %}<li>{{ block.settings.feature_5 | escape }}</li>{% endif %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="bottom-btn">
+      {% if section.settings.bottom_button_url != blank %}
+        <a href="{{ section.settings.bottom_button_url }}" class="btn highlight">
+          {{ section.settings.bottom_button_text | escape }}
+        </a>
+      {% else %}
+        <span class="btn highlight">{{ section.settings.bottom_button_text | escape }}</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Jazz Band Collection",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Section Heading", "default": "Jazz Band Collection" },
+    { "type": "text", "id": "subheading", "label": "Section Subheading", "default": "This is red light, reimagined. Choose the perfect device for your wellness journey." },
+    { "type": "text", "id": "bottom_button_text", "label": "Bottom Button Text", "default": "Shop All Models" },
+    { "type": "url", "id": "bottom_button_url", "label": "Bottom Button Link" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Card Image" },
+        { "type": "text", "id": "title", "label": "Card Title" },
+        { "type": "textarea", "id": "description", "label": "Card Description" },
+        { "type": "text", "id": "price", "label": "Card Price" },
+        { "type": "text", "id": "button_text", "label": "Button Text", "default": "Shop Now" },
+        { "type": "url", "id": "button_url", "label": "Button Link" },
+        { "type": "checkbox", "id": "popular", "label": "Mark as Popular", "default": false },
+        { "type": "text", "id": "badge_text", "label": "Popular Badge Text", "default": "Most Popular" },
+        { "type": "text", "id": "feature_1", "label": "Feature 1" },
+        { "type": "text", "id": "feature_2", "label": "Feature 2" },
+        { "type": "text", "id": "feature_3", "label": "Feature 3" },
+        { "type": "text", "id": "feature_4", "label": "Feature 4" },
+        { "type": "text", "id": "feature_5", "label": "Feature 5" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Jazz Band Collection",
+      "category": "Custom Sections",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card", "settings": { "popular": true } },
+        { "type": "card" },
+        { "type": "card" },
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.jazz-section { 
+  position: relative;
+  text-align: center; 
+  padding: 90px 0; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  overflow: hidden;
+}
+
+.jazz-section .bg-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.jazz-section .content-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jazz-section .main-heading { 
+  margin-bottom: 16px; 
+  color: #0E0F11; 
+}
+
+.jazz-section .sub-heading { 
+  font-size: 20px; 
+  line-height: 28px; 
+  font-weight: 400; 
+  color: #0A0A0A; 
+  margin-bottom: 60px; 
+}
+
+.jazz-section .card-container { 
+  display: flex; 
+  justify-content: center; 
+  align-items: stretch; 
+  gap: 30px; 
+  flex-wrap: nowrap; 
+}
+
+.jazz-section .card { 
+  background-color: #111; 
+  color: #fff; 
+  border-radius: 20px; 
+  width: 33%; 
+  padding: 30px; 
+  position: relative; 
+  overflow: visible; 
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+  text-align: left; 
+  transition: all 0.3s ease; 
+}
+
+.jazz-section .card.popular { 
+  border: 2px solid #ff007f; 
+  transform: scale(1.05); 
+  z-index: 2; 
+  box-shadow: 0px 25px 50px -12px rgba(233,52,190,0.33); 
+}
+
+.jazz-section .badge { 
+  position: absolute; 
+  top: -16px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  background-color: #ff007f; 
+  color: #fff; 
+  font-size: 12px; 
+  padding: 6px 12px; 
+  border-radius: 20px; 
+  font-weight: 600; 
+  z-index: 7;
+}
+
+.jazz-section .card-img { 
+  width: 100%; 
+  height: 340px; 
+  border-radius: 12px; 
+  object-fit: cover; 
+  margin-bottom: 20px; 
+}
+
+.jazz-section .card.popular .card-img { height: 370px; }
+
+.jazz-section .card-title { margin: 10px 0; }
+
+.jazz-section .card-desc { margin-bottom: 16px; color: #ccc; }
+
+.jazz-section .price { 
+  font-size: 36px; 
+  line-height: 40px; 
+  font-weight: 600; 
+  margin-bottom: 16px; 
+}
+
+.jazz-section .btn { 
+  background-color: #333; 
+  color: #fff; 
+  border: none; 
+  padding: 15px 24px; 
+  border-radius: 10px; 
+  font-size: 14px; 
+  line-height: 20px; 
+  font-weight: 500; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  width: 100%; 
+  text-align: center; 
+  display: inline-block; 
+  text-decoration: none; 
+}
+
+.jazz-section .btn:hover { background-color: #555; }
+
+.jazz-section .btn.highlight { 
+  background: linear-gradient(90deg, #ec0d87 0%, #ec0d87 100%); 
+  color: white; 
+  box-shadow: 0px 1px 2px 0px #ec0d87; 
+}
+
+.jazz-section .btn.highlight:hover { 
+  background: linear-gradient(45deg, #d30975 0%, #ef0c8d 50%, #f155a6 100%); 
+  box-shadow: 0px 4px 10px rgba(236, 13, 135, 0.5); 
+}
+
+.jazz-section .feature-list { 
+  list-style: none; 
+  padding: 0; 
+  margin: 25px 0 0 0; 
+}
+
+.jazz-section .feature-list li { 
+  font-size: 14px; 
+  line-height: 20px; 
+  margin-bottom: 14px; 
+  position: relative; 
+  padding-left: 20px; 
+}
+
+.jazz-section .feature-list li::before { 
+  content: "✔"; 
+  color: #ff007f; 
+  position: absolute; 
+  left: 0; 
+  top: 0; 
+}
+
+.jazz-section .bottom-btn { 
+  display: flex; 
+  justify-content: center; 
+  margin-top: 90px; 
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .jazz-section { padding: 50px 0; }
+  .jazz-section .card-container { flex-wrap: wrap; gap: 50px; padding: 0 20px; flex-direction: column; }
+  .jazz-section .card { width: 100%; margin: 0 auto; }
+  .jazz-section .card.popular { transform: scale(1.02); }
+  .jazz-section .sub-heading { margin-bottom: 50px; }
+}
+
+/* Mobile */
+@media (max-width: 766px) {
+  .jazz-section { width: 100%; padding: 40px 0; }
+  .jazz-section .sub-heading { font-size: 16px; line-height: 24px; padding: 0 10px; margin-bottom: 30px; }
+  .jazz-section .card-container { align-items: center; padding: 0 10px; flex-direction: column; }
+  .jazz-section .card { width: 100%; max-width: 100%; }
+  .jazz-section .bottom-btn { margin-top: 30px; }
+  .jazz-section .card.popular { transform: scale(1); }
+}
+{% endstylesheet %}
