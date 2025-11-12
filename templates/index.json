@@ -122,56 +122,33 @@
         "slide_iVDw9k": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/75a0adfc26cd613219c5a85b21911a88c75e3c7b_9b8b2377-6282-4457-807d-1628f3a6a8ba.jpg",
             "alt_text": ""
           }
         },
         "slide_xkJcVw": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/img4.jpg",
             "alt_text": ""
           }
         },
         "slide_HhDiTf": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/img2.jpg",
             "alt_text": ""
-          }
-        },
-        "feature_bf6Eme": {
-          "type": "feature",
-          "settings": {
-            "number": "1",
-            "title": "Smarter, Not Stronger",
-            "description": "Our technology delivers targeted light, magnetic, and microvibration frequencies..."
-          }
-        },
-        "feature_X6KXkk": {
-          "type": "feature",
-          "settings": {
-            "number": "2",
-            "title": "Four Therapies. One Comfortable Wearable.",
-            "description": "The Jazz Band combines red light, near-infrared, magnetic signaling..."
-          }
-        },
-        "feature_zzQ3gg": {
-          "type": "feature",
-          "settings": {
-            "number": "3",
-            "title": "Advanced, Safe, and American-Made",
-            "description": "Built with precision and safety in mind, our devices use low-intensity signals..."
           }
         }
       },
       "block_order": [
         "slide_iVDw9k",
         "slide_xkJcVw",
-        "slide_HhDiTf",
-        "feature_bf6Eme",
-        "feature_X6KXkk",
-        "feature_zzQ3gg"
+        "slide_HhDiTf"
       ],
       "name": "Regenerative Light",
       "settings": {
+        "video_file": "shopify://files/videos/0caa33e33ca84713b797903780883f76.mp4",
         "heading": "regenerative Light Therapy. regenerative Comparison.",
         "subheading": "Here's why the future belongs to DNA Vibe."
       }
