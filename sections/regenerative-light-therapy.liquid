@@ -1,0 +1,782 @@
+<section class="beyond-light-therapy" style="position:relative;">
+
+  <style>
+
+    .beyond-light-therapy * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .beyond-light-therapy {
+      font-family: Geist, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background: white;
+      min-height: 850px;
+      color: #000000;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .beyond-light-therapy .main {
+      display: flex;
+      align-items: center;
+      max-width: 1245px;
+      margin: auto;
+      padding-top: 90px;
+      padding-bottom: 90px;
+      gap: 4.6rem;
+      position: relative;
+    }
+
+    .beyond-light-therapy .main-bg::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("{{ section.settings.bg_image | image_url }}") center/cover no-repeat;
+      opacity: 4%;
+      z-index: 0;
+    }
+
+    /* Smooth easing curves - Same as FAQ section */
+    :root {
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out-smooth: cubic-bezier(0, 0, 0.2, 1);
+      --ease-in-smooth: cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    /* Carousel styling */
+    .beyond-light-therapy .carousel-container {
+      width: 511px;
+      margin: auto;
+      perspective: 1000px;
+      overflow: visible;
+      position: relative;
+    }
+
+    .beyond-light-therapy .carousel-track {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 1.8s var(--ease-smooth);
+      position: relative;
+    }
+
+    .beyond-light-therapy .carousel-slide {
+      position: absolute;
+      transition: all 1.8s var(--ease-smooth);
+      will-change: transform, opacity;
+    }
+
+    .beyond-light-therapy .carousel-slide img {
+      width: 362px;
+      height: 497px;
+      border-radius: 10px;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease-smooth);
+    }
+
+    /* Positioning for visible slides */
+    .beyond-light-therapy .carousel-slide.left {
+      transform: translateX(-110px) scale(0.8);
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .beyond-light-therapy .carousel-slide.center {
+      transform: translateX(0px) scale(1);
+      z-index: 3;
+      opacity: 1;
+    }
+
+    .beyond-light-therapy .carousel-slide.right {
+      transform: translateX(110px) scale(0.8);
+      z-index: 1;
+      opacity: 0.7;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .beyond-light-therapy .arrows {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .beyond-light-therapy .carousel-arrow {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
+      opacity: 0.5;
+      cursor: pointer;
+      pointer-events: auto;
+      user-select: none;
+      padding: 0px 10px;
+      transition: opacity 0.4s var(--ease-smooth), transform 0.3s var(--ease-smooth);
+      will-change: opacity, transform;
+    }
+
+    .beyond-light-therapy .carousel-arrow:hover {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+
+    .beyond-light-therapy .carousel-backdrop {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 423px;
+      height: 497px;
+      background-color: #ed74b6;
+      opacity: 90%;
+      filter: blur(150px);
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      pointer-events: none;
+      animation: backdropPulse 4s var(--ease-smooth) infinite alternate;
+      will-change: opacity;
+    }
+
+    @keyframes backdropPulse {
+      from {
+        opacity: 0.7;
+      }
+      to {
+        opacity: 0.9;
+      }
+    }
+
+    /* Content Styles */
+    .beyond-light-therapy .content-container {
+      padding: 0;
+      width: 661px;
+    }
+
+    .beyond-light-therapy .content-header {
+      margin-bottom: 25px;
+    }
+
+    .beyond-light-therapy .main-title {
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 66px;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out-smooth) forwards;
+    }
+
+    .beyond-light-therapy .subtitle {
+      font-size: 20px;
+      line-height: 45px;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out-smooth) 0.1s forwards;
+    }
+
+    .beyond-light-therapy .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Accordion Feature Item Styles - EXACT same as FAQ main-toggle */
+    .beyond-light-therapy .feature-item {
+      display: flex;
+      align-items: stretch;
+      border: 1px solid rgba(255,105,180,0.4);
+      border-radius: 40px;
+      background: #3A3A3A;
+      box-shadow: 0 0 20px rgba(255,43,106,0.4);
+      transition: all 0.4s var(--ease-smooth);
+      will-change: transform, border-color, box-shadow;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out-smooth) forwards;
+    }
+
+    /* Hover effects - Same as FAQ */
+    .beyond-light-therapy .feature-item:hover {
+      border-color: rgba(236, 13, 135, 0.8);
+      box-shadow: 0 0 30px rgba(255,43,106,0.6);
+      transform: translateY(-2px);
+    }
+
+
+    /* EXACT FAQ STRUCTURE - togg-icon */
+    .beyond-light-therapy .feature-number {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      width: 75px;
+      background: #323232;
+      border-radius: 45px;
+      border: 1px solid #4C4C4C;
+      padding-top: 15px;
+      transition: border-color 0.4s var(--ease-smooth);
+      will-change: border-color;
+      color: white;
+      font-size: 24px;
+      line-height: 36px;
+      font-weight: 700;
+    }
+
+    .beyond-light-therapy .feature-item.active .feature-number {
+      border-color: #FF2B6A;
+    }
+
+    .beyond-light-therapy .feature-item:hover .feature-number {
+      border-color: #ec0d87;
+    }
+
+    /* EXACT FAQ STRUCTURE - tog-con */
+    .beyond-light-therapy .feature-content {
+      width: 87%;
+    }
+
+    /* EXACT FAQ STRUCTURE - toggle-item */
+    .beyond-light-therapy .feature-inner {
+      position: relative;
+    }
+
+    /* EXACT FAQ STRUCTURE - toggle-header */
+    .beyond-light-therapy .feature-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+      padding: 0 30px;
+      cursor: pointer;
+    }
+
+    /* EXACT FAQ STRUCTURE - toggle-left */
+    .beyond-light-therapy .feature-left {
+      /* Wrapper for title alignment */
+    }
+
+    /* EXACT FAQ STRUCTURE - toggle-title */
+    .beyond-light-therapy .feature-title {
+      color: #fff;
+      transition: color 0.3s var(--ease-smooth);
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif !important;
+    }
+
+    /* EXACT FAQ STRUCTURE - toggle-content */
+    .beyond-light-therapy .feature-description {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s var(--ease-smooth), padding 0.6s var(--ease-smooth);
+      will-change: max-height;
+    }
+
+    .beyond-light-therapy .feature-inner.active .feature-description {
+      max-height: 5000px;
+      padding: 0 30px 25px;
+    }
+
+    .beyond-light-therapy .feature-description p {
+      color: #C1C1C1;
+      opacity: 0;
+      transition: opacity 0.4s var(--ease-smooth) 0.2s;
+      font-size: 17px !important;
+    }
+
+    .beyond-light-therapy .feature-inner.active .feature-description p {
+      opacity: 1;
+    }
+
+    /* Entrance animations - EXACT from FAQ */
+    .beyond-light-therapy .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out-smooth) forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .beyond-light-therapy .fade-in-up {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .beyond-light-therapy .main-title,
+      .beyond-light-therapy .subtitle,
+      .beyond-light-therapy .feature-item {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .beyond-light-therapy .carousel-backdrop {
+        animation: none;
+      }
+    }
+
+    /* Tablet Styles */
+    @media (max-width: 1024px) {
+      .beyond-light-therapy .main {
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
+      .beyond-light-therapy .carousel-container {
+        width: 40%;
+      }
+
+      .beyond-light-therapy .carousel-slide img {
+        width: 400px;
+        max-width: 300px;
+        height: 397px;
+      }
+
+      .beyond-light-therapy .carousel-slide.left {
+        transform: translateX(-80px) scale(0.8);
+      }
+
+      .beyond-light-therapy .carousel-slide.right {
+        transform: translateX(80px) scale(0.8);
+      }
+
+      .beyond-light-therapy .main-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .beyond-light-therapy .content-container {
+        width: 100%;
+        text-align: center;
+      }
+
+      .beyond-light-therapy .feature-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 20px;
+        gap: 10px;
+      }
+
+      .beyond-light-therapy .feature-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.25rem;
+        padding: 0;
+        border-radius: 50%;
+      }
+
+      .beyond-light-therapy .feature-header {
+        height: 60px;
+        padding: 0 20px;
+      }
+
+      .beyond-light-therapy .feature-inner.active .feature-description {
+        padding: 0 20px 25px;
+      }
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .beyond-light-therapy .main {
+        flex-direction: column;
+        padding: 40px 10px;
+        z-index: 1;
+      }
+
+      .beyond-light-therapy .carousel-container {
+        order: 2;
+        z-index: 2;
+        margin-top: 200px;
+        max-height: 200px;
+      }
+
+      .carousel-wrapper {
+        height: 500px;
+      }
+
+      .beyond-light-therapy .content-container {
+        order: 1;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+      }
+
+      .beyond-light-therapy .main-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        line-height: 2.7rem;
+      }
+
+      .beyond-light-therapy .feature-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 20px;
+        gap: 10px;
+      }
+
+      .beyond-light-therapy .feature-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.25rem;
+        padding: 0;
+        border-radius: 50%;
+      }
+
+      .beyond-light-therapy .feature-header {
+        height: 60px;
+        padding: 0 20px;
+      }
+
+      .beyond-light-therapy .feature-inner.active .feature-description {
+        padding: 0 20px 25px;
+      }
+
+      .beyond-light-therapy .carousel-backdrop {
+        filter: blur(80px);
+        opacity: 0.5;
+      }
+
+      .beyond-light-therapy .carousel-arrow {
+        font-size: 1.8rem;
+        opacity: 0.6;
+      }
+
+      .beyond-light-therapy .carousel-slide.left {
+        transform: translateX(-30%) scale(0.8);
+      }
+
+      .beyond-light-therapy .carousel-slide.right {
+        transform: translateX(30%) scale(0.8);
+      }
+    }
+
+    .content-header h2 {
+      font-size: 48px !important;
+      line-height: 1.1 !important;
+      font-weight: 700 !important;
+      font-family: 'Inter', sans-serif !important;
+    }
+
+    /* Tablet */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .beyond-light-therapy .arrows {
+        width: 135%;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .content-header h2 {
+        font-size: 36px !important;
+      }
+
+      .beyond-light-therapy .features-list {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+      }
+
+      .beyond-light-therapy .feature-item {
+        width: 33.33%;
+      }
+
+      .beyond-light-therapy .subtitle {
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 500;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 766px) {
+      .beyond-light-therapy .arrows {
+        width: 235%;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .content-header h2 {
+        font-size: 30px !important;
+        line-height: 36px !Important;
+      }
+
+      .beyond-light-therapy .carousel-slide.left {
+        transform: translateX(-23%) scale(0.8);
+      }
+
+      .beyond-light-therapy .carousel-slide.right {
+        transform: translateX(23%) scale(0.8);
+      }
+
+      .beyond-light-therapy .subtitle {
+        font-size: 18px;
+        line-height: 20px;
+      }
+    }
+
+  </style>
+
+  <div class="main-bg">
+    {% comment %} Background Video or Image {% endcomment %}
+    {% if section.settings.video_file != blank %}
+      <div class="hero-video" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:hidden;opacity: 0.4;">
+        {{ section.settings.video_file | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, class: 'hero-bg-video', style: 'width:100%;height:100%;object-fit:cover;' }}
+      </div>
+    {% else %}
+      <div class="hero-bg" style="position:absolute;inset:0;width:100%;height:100%;background:url({{ section.settings.background_image | image_url: width: 1920 }}) no-repeat center center/cover;z-index:0;"></div>
+    {% endif %}
+
+    {% comment %} Custom Image Added Here {% endcomment %}
+    {% if section.settings.logo_image != blank %}
+      <img 
+        src="{{ section.settings.logo_image | image_url: width: 300 }}" 
+        alt="{{ section.settings.logo_alt | default: section.settings.heading }}" 
+        style="max-width:380px; height:auto; margin:0 auto 20px auto; display:block;z-index: 7;"
+        class="hero-img"
+      >
+    {% endif %}
+    {% comment %} End Custom Image {% endcomment %}
+
+    <div class="main">
+      <div class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-backdrop"></div>
+          <div class="carousel-track" id="carouselTrack-{{ section.id }}">
+            {% for block in section.blocks %}
+              {% if block.type == 'slide' %}
+                <div class="carousel-slide">
+                  <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.alt_text }}">
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="arrows">
+            <div class="carousel-arrow left-arrow" id="prevBtn-{{ section.id }}">&#10094;</div>
+            <div class="carousel-arrow right-arrow" id="nextBtn-{{ section.id }}">&#10095;</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-container">
+        <header class="content-header">
+          <h2 class="main-title">{{ section.settings.heading }}</h2>
+          <p class="subtitle">{{ section.settings.subheading }}</p>
+        </header>
+        <div class="features-list" id="featuresList-{{ section.id }}">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              <div class="feature-item fade-in-up" style="animation-delay: {{ forloop.index | times: 100 | plus: 200 }}ms;">
+                <div class="feature-number">
+                  {{ block.settings.number }}
+                </div>
+                <div class="feature-content">
+                  <div class="feature-inner">
+                    <div class="feature-header">
+                      <div class="feature-left">
+                        <h3 class="feature-title">{{ block.settings.title }}</h3>
+                      </div>
+                    </div>
+                    <div class="feature-description">
+                      <p>{{ block.settings.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const trackId = "carouselTrack-{{ section.id }}";
+      const slides = document.querySelectorAll(`#${trackId} .carousel-slide`);
+      const prevBtn = document.getElementById("prevBtn-{{ section.id }}");
+      const nextBtn = document.getElementById("nextBtn-{{ section.id }}");
+      const featuresList = document.getElementById("featuresList-{{ section.id }}");
+      const featureItems = featuresList ? featuresList.querySelectorAll(".feature-item") : [];
+      
+      let current = 0;
+      const total = slides.length;
+      const intervalDuration = 3000;
+      let slideInterval = null;
+
+      function updateSlides() {
+        if (total === 0) return;
+        
+        slides.forEach(slide => slide.classList.remove("left", "center", "right"));
+        
+        const prev = (current - 1 + total) % total;
+        const next = (current + 1) % total;
+        
+        slides[prev].classList.add("left");
+        slides[current].classList.add("center");
+        slides[next].classList.add("right");
+      }
+
+      function moveNext() {
+        if (total === 0) return;
+        current = (current + 1) % total;
+        updateSlides();
+        resetInterval();
+      }
+
+      function movePrev() {
+        if (total === 0) return;
+        current = (current - 1 + total) % total;
+        updateSlides();
+        resetInterval();
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", movePrev);
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", moveNext);
+      }
+
+      function startAutoPlay() {
+        if (total <= 1) return;
+        slideInterval = setInterval(() => {
+          current = (current + 1) % total;
+          updateSlides();
+        }, intervalDuration);
+      }
+
+      function resetInterval() {
+        if (slideInterval) {
+          clearInterval(slideInterval);
+        }
+        startAutoPlay();
+      }
+
+      // EXACT FAQ ACCORDION FUNCTIONALITY
+      featureItems.forEach(mt => {
+        const header = mt.querySelector('.feature-header');
+        const item = mt.querySelector('.feature-inner');
+        
+        if (!header || !item) return;
+
+        header.addEventListener('click', () => {
+          featureItems.forEach(other => {
+            if (other !== mt) {
+              other.classList.remove('active');
+              other.querySelector('.feature-inner').classList.remove('active');
+            }
+          });
+
+          const isActive = item.classList.contains('active');
+          item.classList.toggle('active', !isActive);
+          mt.classList.toggle('active', !isActive);
+        });
+      });
+
+      // ✅ Make the first toggle active by default
+      if (featureItems.length > 0) {
+        featureItems[0].classList.add('active');
+        const firstItem = featureItems[0].querySelector('.feature-inner');
+        if (firstItem) firstItem.classList.add('active');
+      }
+
+      // Initialize carousel
+      if (total > 0) {
+        updateSlides();
+        startAutoPlay();
+      }
+    });
+  </script>
+
+  {% schema %}
+  {
+    "name": "Regenerative Light",
+    "settings": [
+      {
+        "type": "video",
+        "id": "video_file",
+        "label": "Upload Background Video (MP4)"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Fallback Background Image"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Main Heading",
+        "default": "Beyond Light Therapy. Beyond Comparison."
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Here's why the future belongs to DNA Vibe."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Carousel Image",
+        "settings": [
+          { "type": "image_picker", "id": "image", "label": "Slide Image" },
+          { "type": "text", "id": "alt_text", "label": "Alt Text" }
+        ]
+      },
+      {
+        "type": "feature",
+        "name": "Feature Item",
+        "settings": [
+          { "type": "text", "id": "number", "label": "Number", "default": "1" },
+          { "type": "text", "id": "title", "label": "Title", "default": "Smarter, Not Stronger" },
+          { "type": "textarea", "id": "description", "label": "Description", "default": "Our technology delivers targeted light, magnetic, and microvibration frequencies that interact with your body at the cellular level." }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Regenerative Light",
+        "category": "Custom Sections",
+        "blocks": [
+          { "type": "slide" },
+          { "type": "slide" },
+          { "type": "slide" },
+          { "type": "feature", "settings": { "number": "1", "title": "Smarter, Not Stronger", "description": "Our technology delivers targeted light, magnetic, and microvibration frequencies..." } },
+          { "type": "feature", "settings": { "number": "2", "title": "Four Therapies. One Comfortable Wearable.", "description": "The Jazz Band combines red light, near-infrared, magnetic signaling..." } },
+          { "type": "feature", "settings": { "number": "3", "title": "Advanced, Safe, and American-Made", "description": "Built with precision and safety in mind, our devices use low-intensity signals..." } }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+
+</section>
